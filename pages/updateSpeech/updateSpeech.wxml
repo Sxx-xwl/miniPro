@@ -1,0 +1,19 @@
+<!--pages/updateSpeech/updateSpeech.wxml-->
+
+<!-- 添加内容 -->
+<view class="body" wx:if="{{display}}">
+  <van-cell-group inset class="content">
+    <!-- 添加内容 -->
+    <van-field value="{{ text }}" label="记录内容：" left-icon="comment-circle-o" type="textarea" autosize placeholder="记录吧！" border="{{ false }}" bind:input="getText" />
+    <!-- 添加图片 -->
+    <van-field left-icon="smile-o" center clearable label="记录图片：" placeholder="没图言diao" border="{{ false }}" use-button-slot>
+      <van-button slot="button" round size="small" type="primary" bindtap="chooseImg">
+        点击上传
+      </van-button>
+    </van-field>
+  </van-cell-group>
+  <view class="submit">
+    <van-button color="#81e9e6" class="button" bindtap="updatebtn">点击写入</van-button>
+    <van-button color="red" class="button" bindtap="deletebtn">删除内容</van-button>
+  </view>
+</view>

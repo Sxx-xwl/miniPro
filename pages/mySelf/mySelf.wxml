@@ -1,0 +1,30 @@
+<!--pages/mySelf/mySelf.wxml-->
+<view class="body">
+  <view class="info">
+    <!-- <view>{{openid}}</view> -->
+    <view class="background" style="background-image: url({{portrait}});"></view>
+    <van-image class="image" fit="contain" round width="5rem" height="5rem" src="{{portrait}}" wx:if="{{portrait.length>0}}" />
+    <view class="myInfo" wx:if="{{userName}}">{{userName}}</view>
+  </view>
+
+  <!-- Field 输入框 -->
+  <view wx:if="{{userName}}" class="feedback">
+    <van-cell-group inset wx:if="{{openid!='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}">
+      <van-cell>
+        <van-field bind:change='onChange' value="{{ feedback }}" label="用户反馈：" type="textarea" placeholder="请输入您的意见" autosize border="{{ false }}" />
+      </van-cell>
+      <van-cell>
+        <van-button bindtap="submitFB" icon="edit" type="info" size="small">提交</van-button>
+      </van-cell>
+    </van-cell-group>
+    <van-cell-group inset wx:if="{{openid=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}" class="myself">
+      <van-cell title="来访次数：" value="{{times}}次！" />
+      <van-cell title="上次来访时间：" value="{{time}}" class="shetime"/>
+    </van-cell-group>
+    <view class="bottom">
+      <view class="environment">version：2.2.0</view>
+    </view>
+  </view>
+</view>
+
+<van-toast id="van-toast" />

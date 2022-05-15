@@ -1,0 +1,90 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/function/function",
+    "pages/markDay/markDay",
+    "pages/addmarkDay/addmarkDay",
+    "pages/mySelf/mySelf",
+    "pages/messagePage/messagePage",
+    "pages/wishingTreePage/wishingTreePage",
+    "pages/userList/userList",
+    "pages/feedback/feedback",
+    "pages/speech/speech",
+    "pages/addSpeech/addSpeech",
+    "pages/updateSpeech/updateSpeech",
+    "pages/prime/prime",
+    "pages/prime/bb/index",
+    "pages/prime/seesee/index",
+    "components/DatetimePicker/index"
+  ],
+  "window": {
+    "backgroundColor": "#f2f2f2",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f0f0f0",
+    "navigationBarTitleText": "星期一 Monday",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#2c2c2c",
+    "backgroundColor": "#ffffff",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "selectedIconPath": "assets/首页.png",
+        "iconPath": "assets/首页0.png"
+      },
+      {
+        "pagePath": "pages/function/function",
+        "text": "功能",
+        "selectedIconPath": "assets/功能.png",
+        "iconPath": "assets/功能0.png"
+      },
+      {
+        "pagePath": "pages/messagePage/messagePage",
+        "text": "留言",
+        "selectedIconPath": "assets/留言.png",
+        "iconPath": "assets/留言0.png"
+      },
+      {
+        "pagePath": "pages/mySelf/mySelf",
+        "text": "我的",
+        "selectedIconPath": "assets/我的.png",
+        "iconPath": "assets/我的0.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-collapse": "@vant/weapp/collapse/index",
+    "van-collapse-item": "@vant/weapp/collapse-item/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+    "van-count-down": "@vant/weapp/count-down/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-transition": "@vant/weapp/transition/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-config-provider": "@vant/weapp/config-provider/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-card": "@vant/weapp/card/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-overlay": "@vant/weapp/overlay/index",
+    "van-notify": "@vant/weapp/notify/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index"
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

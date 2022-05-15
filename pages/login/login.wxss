@@ -1,0 +1,17 @@
+/* pages/login/login.wxss */
+
+page{
+  background: #f2f2f2;
+}
+
+.img{
+  width: 100vw;
+  height: 100vh;
+}
+
+.add {
+  height: 7vh;
+  width: 10vw;
+  position: absolute;
+  color: rgb(0, 0, 0);
+}

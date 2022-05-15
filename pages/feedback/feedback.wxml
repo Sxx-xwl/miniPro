@@ -1,0 +1,28 @@
+<!--pages/feedback/feedback.wxml-->
+
+<!-- 顶部通知栏 -->
+<van-notice-bar color="#1989fa" background="#ecf9ff" left-icon="phone" class="notice">
+  看看他们都说啥了！👀
+</van-notice-bar>
+<!-- 留言列表 -->
+<view class="messageList">
+  <scroll-view scroll-y="true" class="list">
+    <view class="list-scroll-view">
+      <block class="commentsBlock" wx:for="{{list}}" wx:key="index">
+
+        <view class="commentsInfo">
+          <view class="commentPart1">
+            <van-image round width="2rem" height="2rem" src="{{item.portrait}}" />
+            <view class="commentName">{{item.userName}}</view>
+          </view>
+          <view class="commentPart2">
+            <view class="comment">{{item.feedback}}</view>
+            <view class="commentData">{{item.submitTime}}</view>
+          </view>
+        </view>
+        <view class="divider"></view>
+
+      </block>
+    </view>
+  </scroll-view>
+</view>

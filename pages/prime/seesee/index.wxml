@@ -1,0 +1,39 @@
+<view>
+  <view class="top_tip"> 下面的图片好像能左右滑动</view>
+  <view class="box_text">
+    <swiper class="swiper-container"  circular autoplay>
+      <swiper-item>
+        <image class="big_image" src="../../../images/cp1.jpg" mode="aspectFit" ></image>
+        <view>《派大星的爱》</view>
+      </swiper-item>
+      <swiper-item>
+        <image class="big_image" src="../../../images/cp2.jpg" mode="aspectFit" ></image>
+        <view>《最爱的傻狗》</view>
+      </swiper-item>
+      <swiper-item>
+        <image class="big_image" src="../../../images/cp3.jpg" mode="aspectFit" ></image>
+        <view>《另一只》</view>
+      </swiper-item>
+      <swiper-item>
+        <image class="big_image" src="../../../images/cp4.jpg" mode="aspectFit" ></image>
+        <view>《美甲》</view>
+      </swiper-item>
+      <swiper-item>
+        <image class="big_image" src="../../../images/cp5.jpg" mode="aspectFit" ></image>
+        <view>《最美的美甲》</view>
+      </swiper-item>
+      <swiper-item>
+        <image class="big_image" src="../../../images/cp6.jpg" mode="aspectFit" ></image>
+        <view>《蒙娜伟丽》</view>
+      </swiper-item>
+      <swiper-item>
+        <image class="big_image" src="../../../images/cp7.jpg" mode="aspectFit" ></image>
+        <view>《苏晓旭》</view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <view class="tip"></view>
+  <view class="tip">图片来源：傻狗</view>
+  <cloud-tip-modal showUploadTipProps="{{showUploadTip}}"></cloud-tip-modal>
+</view>

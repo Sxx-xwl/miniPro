@@ -1,0 +1,21 @@
+<!-- NoticeBar 顶部通知栏 -->
+<van-notice-bar left-icon="volume-o" background="#ecf9ff" scrollable color="blue" text="没有什么是大哥记不住的！如果有写下来！" />
+
+<!-- 设置纪念日名称 -->
+<view class="body">
+  <van-cell-group inset class="content">
+    <van-cell>
+      <van-field v-model="string" clearable label="名称：" left-icon="comment-circle-o" placeholder="啥日子啊？" value="{{ markText }}" data-id='1' bind:change="onChange" />
+    </van-cell>
+    <van-cell class="datetime">
+      <van-field v-model="string" clearable label="日期：" left-icon="clock-o" placeholder="别输入，点右下角" value="{{ markDate }}" />
+      <!-- //年月日时分秒选择器 -->
+      <DatetimePicker mode="datetime" value="{{markDate}}" bindchange="selectDateSecondChange">
+        <view class="show-date-time-box">请选择时间: 点击这里</view>
+      </DatetimePicker>
+    </van-cell>
+  </van-cell-group>
+  <view class="submit">
+    <van-button color="#81e9e6" class="button" bindtap="createDay">创建日子</van-button>
+  </view>
+</view>

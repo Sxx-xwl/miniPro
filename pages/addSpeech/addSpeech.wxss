@@ -1,0 +1,113 @@
+/* pages/addmarkDay/addmarkDay.wxss */
+page {
+  height: 100%;
+}
+
+.body {
+  padding-top: 5%;
+}
+
+.messageList {
+  display: flex;
+  flex-grow: 1;
+  position: relative;
+}
+
+.list-scroll-view {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+
+.commentsInfo {
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.commentPart1 {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding-left: 2%;
+  padding-right: 4%;
+}
+
+.commentPart2 {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding-left: 2%;
+  padding-right: 4%;
+}
+
+.commentName {
+  padding-left: 3vw;
+  padding-right: 3vw;
+  font-size: 30rpx;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.commentName1 {
+  padding-left: 3vw;
+  padding-right: 3vw;
+  font-size: 30rpx;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.show .button .van-button{
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  padding-top: 3%;
+  border-radius: 5%;
+}
+
+.divider {
+  width: 100vw;
+  border: solid 1px #57cfff;
+}
+
+.commentsBlock {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+
+
+
+
+
+
+
+
+
+
+.content .van-cell {
+  display: flex;
+  background-color: #a8f0ed;
+  font-size: small;
+}
+
+.content .van-field__control {
+  color: rgb(0, 0, 0);
+}
+
+.submit {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 3%;
+}
+
+.button .van-button {
+  border-radius: 15%;
+}

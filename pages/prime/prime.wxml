@@ -1,0 +1,44 @@
+<!--index.wxml-->
+<view class="body">
+
+<view class="title">欢迎来到你的家！</view>
+<view class="title">有在更新 由于遇到了瓶颈。</view>
+<view class="title">所以会更新的比较慢！</view>
+<view class="title">敬请期待恋爱版！</view>
+<view class="top_tip">在这里你可以 点点这个 按按那个</view>
+
+<image class="big_image" src="../../images/cp.jpg" mode="widthFix" ></image> 
+<view class="power" wx:key="title" wx:for="{{powerList}}" wx:for-item="power">
+  <!--<view class="power_info" data-index="{{index}}" >   <!--bindtap="onClickPowerInfo"-->
+  <view  wx:if="{{index<1}}" class="power_info" data-index="{{index}}"  bindtap="onClickPowerInfo" >   
+    <view class="power_info_text">
+      <view class="power_info_text_title">{{power.title}}</view>
+      <view class="power_info_text_tip">{{power.tip}}</view>
+    </view>
+    <image wx:if="{{!power.showItem}}" class="power_info_more" src="../../images/arrow.svg" ></image>
+    <image wx:if="{{power.showItem}}" class="power_info_less" src="../../images/arrow.svg"></image>
+  </view>
+  <view  wx:if="{{index>0}}" class="power_info" data-index="{{index}}">   
+    <view class="power_info_text">
+      <view class="power_info_text_title">{{power.title}}</view>
+      <view class="power_info_text_tip">{{power.tip}}</view>
+    </view>
+    <image wx:if="{{!power.showItem}}" class="power_info_more" src="../../images/arrow.svg" ></image>
+    <image wx:if="{{power.showItem}}" class="power_info_less" src="../../images/arrow.svg"></image>
+  </view>
+  <view wx:if="{{power.showItem}}">
+    <view wx:key="title" wx:for="{{power.item}}">
+      <view class="line"></view>
+      <view class="power_item" bindtap="jumpPage" data-page="{{item.page}}">
+        <view class="power_item_title">{{item.title}}</view>
+        <image class="power_item_icon" src="../../images/arrow.svg"></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="environment" bindtap="onChangeShowEnvChoose">猛男甜甜 {{ selectedEnv.alias }}</view>
+
+<cloud-tip-modal showUploadTipProps="{{showUploadTip}}"></cloud-tip-modal>
+
+</view>

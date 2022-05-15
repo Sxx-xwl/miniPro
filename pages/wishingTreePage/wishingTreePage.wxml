@@ -1,0 +1,123 @@
+<!--pages/wishingTreePage/wishingTreePage.wxml-->
+
+<!-- 大树 -->
+<view wx:if="{{choose==0}}">
+  <image class="img" src="{{treeImg}}"></image>
+  <!-- 添加愿望按钮 -->
+  <van-button icon="star-o" color="#1a3eb4" bind:click="showPopup" class="add" style="top:72vh;left:40.5vw;" />
+  <!-- 显示礼物盒 -->
+  <view wx:for="{{wishList}}" wx:key="index">
+    <image bindlongpress="showDelete" bindtap="onClickShow" class="like" data-id="{{item._id}}" mode="heightFix" src="{{item.wishIcon}}" style="top:{{wishlocal[index][0]}}vh;left:{{wishlocal[index][1]}}vw;transform:rotate({{wishlocal[index][2]}}deg);"></image>
+  </view>
+</view>
+
+<!-- 已实现界面 -->
+<view wx:if="{{choose==1}}" class="windows2">
+  <view wx:for="{{wishList1}}" wx:key="index">
+    <!-- 我的愿望 -->
+    <view class="view_tupian_wenzi" wx:if="{{item.id=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}" style="background-color:rgb(57, 209, 65);">
+      <van-image width="3rem" height="3rem" fit="contain" src="{{complete}}" />
+      <view class="view_wenzi2" data-id="{{index}}">
+        <view class="completeItem">
+          <text>{{item.userName}}的心愿:{{item.nameValue}}</text>
+          <van-image width="4rem" height="4rem" fit="contain" src="{{item.cloudPath}}" />
+        </view>
+        <text class="completeItemTime">实现时间：{{item.updateTime}}</text>
+      </view>
+    </view>
+    <!-- 她的愿望 -->
+    <view class="view_tupian_wenzi" wx:if="{{item.id=='oZLHV4lqw6nzzt_1Z7I1A8PgR8-s'}}" style="background-color:rgb(87, 217, 250);">
+      <van-image width="3rem" height="3rem" fit="contain" src="{{complete}}" />
+      <view class="view_wenzi2" data-id="{{index}}">
+        <view class="completeItem">
+          <text>{{item.userName}}的心愿:{{item.nameValue}}</text>
+          <van-image width="4rem" height="4rem" fit="contain" src="{{item.cloudPath}}" />
+        </view>
+        <text class="completeItemTime">实现时间：{{item.updateTime}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!-- 底部导航栏 -->
+<view class="tabBar">
+  <view class="tabBar-item">
+    <view bindtap="addWish">
+      <image class="tabBar-icon" src="{{wishPoolImg}}" wx:if="{{choose==0}}"></image>
+      <image class="tabBar-icon" src="{{wishPoolImg1}}" wx:if="{{choose==1}}"></image>
+    </view>
+    <view bindtap="addWish" class="">心愿</view>
+  </view>
+  <view class="line"></view>
+  <view class="tabBar-item">
+    <view bindtap="completeWish">
+      <image class="tabBar-icon" src="{{wishImg}}" wx:if="{{choose==1}}"></image>
+      <image class="tabBar-icon" src="{{wishImg1}}" wx:if="{{choose==0}}"></image>
+    </view>
+    <view bindtap="completeWish" class="">已实现</view>
+  </view>
+</view>
+
+<!-- 弹出窗口 -->
+<van-popup show="{{ show }}" closeable round close-icon="close" position="bottom" custom-style="height: 35%" bind:close="onClose" close-icon-position="bottom-right">
+  <van-cell-group class="addList">
+    <van-field value="{{ nameValue }}" required label="心愿名称：" custom-style="width: 100%" placeholder="请输入想要的心愿！" bind:change="onChange1" />
+    <van-field value="{{ priceValue }}" required label="价格区间：" custom-style="width: 100%" placeholder="请输入该心愿的价格区间！" bind:change="onChange2" />
+
+    <van-field center clearable label="心愿图片" placeholder="没有具体图片就放表情包" border="{{ false }}" use-button-slot>
+      <van-button slot="button" round size="small" type="primary" bindtap="chooseImg">
+        点击上传
+      </van-button>
+    </van-field>
+
+  </van-cell-group>
+  <van-button round type="info" custom-style="width: 80%" class="addbtn" bindtap="addbtn">添加心愿</van-button>
+</van-popup>
+
+<!-- 确认窗口 -->
+<!-- 实现愿望窗口 -->
+<van-overlay show="{{ show1 }}">
+  <view class="wrapper">
+    <view class="block">
+      <van-cell-group class="text">
+        <van-cell title="愿望名称" value="{{selectName}}" />
+        <van-cell title="愿望价格" value="{{selectPrice}}" />
+      </van-cell-group>
+      <van-image width="10rem" height="10rem" fit="contain" src="{{selectImg}}" />
+      <view class="but">
+        <view>
+          <van-button color="#272643" plain bindtap="onClickHide">取消</van-button>
+        </view>
+        <view>
+          <van-button color="#f66fb9" plain bindtap="check">实现</van-button>
+        </view>
+      </view>
+    </view>
+  </view>
+</van-overlay>
+<!-- 删除愿望窗口 -->
+<van-overlay show="{{ show2 }}">
+  <view class="wrapper">
+    <view class="block">
+      <van-cell-group class="text">
+        <van-cell title="愿望名称" value="{{selectName}}" />
+        <van-cell title="愿望价格" value="{{selectPrice}}" />
+      </van-cell-group>
+      <van-image width="10rem" height="10rem" fit="contain" src="{{selectImg}}" />
+      <view class="but">
+        <view>
+          <van-button color="#272643" plain bindtap="onClickHide">取消</van-button>
+        </view>
+        <view>
+          <van-button color="#f66fb9" plain bindtap="delete">删除</van-button>
+        </view>
+      </view>
+    </view>
+  </view>
+</van-overlay>
+
+<!-- 确认窗口 -->
+<van-dialog id="van-dialog" />
+<!-- 通知窗口 -->
+<van-notify id="van-notify" />

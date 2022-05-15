@@ -1,0 +1,144 @@
+/* pages/wishingTreePage/wishingTreePage.wxss */
+.img{
+  width: 100vw;
+  height: 99vh;
+}
+
+.add {
+  height: 7vh;
+  width: 10vw;
+  position: absolute;
+  color: rgb(0, 0, 0);
+}
+
+.like {
+  height: 6vh;
+  position: absolute;
+}
+
+.view_tupian_wenzi {
+  height: 17vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 20rpx;
+  border: 3rpx solid #E0E3DA;
+  box-shadow: 5rpx 5rpx 5rpx 5rpx #E0E3DA;
+  background-color: #ffffff;
+  margin: 30rpx;
+  padding: 30rpx;
+  margin-top: 5vh;
+}
+
+.view_wenzi2 {
+  width: 100%;
+  margin-left: 25rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.completeItem{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.completeItemTime{
+  font-size: small;
+}
+
+.addList{
+  display: flex;
+  padding-top: 0.5%;
+}
+.addList .van-field__label{
+  font-size: small;
+  color: #000;
+}
+
+.uploader{
+  display: flex;
+  font-size: small;
+  width: 120%;
+  color: #000;
+  padding-left: 4%;
+  align-content: center;
+  vertical-align: center;
+}
+
+.uploaderImg{
+  display: flex;
+  width: 100%;
+  padding-left: 110%;
+}
+
+.addbtn{
+  display: flex;
+  padding-top: 2%;
+}
+
+.tabBar {
+  width: 100%;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  padding: 5rpx;
+  background: rgb(132, 209, 129);
+  font-size: 25rpx;
+  color: #000000;
+  align-items: center;
+  justify-content: space-around;
+  border-top-left-radius: 20%;
+  border-top-right-radius: 20%;
+  box-shadow: 5rpx 5rpx 5rpx 5rpx #E0E3DA;
+}
+
+.tabBar-item {
+  float: left;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.line{
+  border: rgb(24, 133, 82) 1px solid;
+  height: 72rpx;
+}
+
+.tabBartext {
+  color: black;
+}
+
+.tabBar-icon {
+  width: 54rpx;
+  height: 54rpx;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
+}
+
+.block {
+  display: flex;
+  width: 80vw;
+  height: 50vh;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.text{
+  width: 100%;
+}
+
+.but{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

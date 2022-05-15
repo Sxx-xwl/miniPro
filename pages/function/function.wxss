@@ -1,0 +1,15 @@
+/* pages/function/function.wxss */
+.function{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-top: 2%;
+}
+
+.functionItem{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2vh;
+}

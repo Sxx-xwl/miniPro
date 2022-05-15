@@ -1,0 +1,30 @@
+<!--pages/speech/speech.wxml-->
+
+<!-- NoticeBar 顶部通知栏 -->
+<van-notice-bar left-icon="volume-o" background="#ecf9ff" scrollable color="#7232dd" text="选一个你喜欢的吧！" />
+
+<!-- 添加按钮 -->
+<view class="add">
+  <van-button bindtap="chooseImg" icon="photo" type="info" class="button">添加一个封面！</van-button>
+</view>
+<!-- 条件筛选 -->
+<van-tabs active="{{ active }}" bind:change="onChange">
+  <van-tab title="全部"></van-tab>
+  <van-tab title="时间筛选">
+    <van-dropdown-menu>
+      <van-dropdown-item id="item" value="item" title="选择时间" overlay="false">
+        <van-datetime-picker type="year-month" value="{{ currentDate }}" bind:confirm="screenTime" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+      </van-dropdown-item>
+    </van-dropdown-menu>
+  </van-tab>
+  <van-tab title="倒序"></van-tab>
+</van-tabs>
+
+<view class="speech">
+  <view class="speechItem" wx:for="{{speechImgList}}" wx:key="index">
+    <view>
+      <van-image width="5.5rem" height="5.5rem" data-id="{{item._id}}" fit="contain" src="{{item.cloudPath}}" bindtap="addSpeech" />
+      <view dot style="font-size: small; color: grey;" class="showTime">{{item.showTime}}</view>
+    </view>
+  </view>
+</view>

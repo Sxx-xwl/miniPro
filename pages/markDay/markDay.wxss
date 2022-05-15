@@ -1,0 +1,104 @@
+/* pages/markDay/markDay.wxss */
+.goods-card {
+  margin: 0;
+  background-color: white;
+}
+
+.delete-button {
+  height: 100%;
+}
+
+.van-swipe-cell__left, .van-swipe-cell__right {
+  display: inline-block;
+  width: 65px;
+  font-size: 15px;
+  text-align: center;
+  background-color: #f44;
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+
+.myMarkDay{
+  display: flex;
+  flex-direction: column;
+  width: 99%;
+}
+
+.myMarkDay .van-cell{
+  border-radius: 5rpx;
+  border: 5rpx solid #5294f7;
+  box-shadow: 5rpx 5rpx 5rpx 5rpx #E0E3DA;
+  width: 100%;
+  margin: 5rpx;
+  padding: 5rpx;
+  margin-top: 1vh;
+  margin-right: 1vw;
+  padding-right: 1vw;
+}
+
+.sheMarkDay{
+  display: flex;
+  flex-direction: column;
+  width: 99%;
+}
+
+.van-cell-text{
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.block1 {
+  display: flex;
+  width: 80vw;
+  height: 50vh;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  background: -webkit-linear-gradient(top,#e9defa,#fbfcdb);
+}
+
+.block2 {
+  display: flex;
+  width: 80vw;
+  height: 50vh;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  background: -webkit-linear-gradient(top,#ffdee9,#b5fffc);
+}
+
+.title{
+  font-size: larger;
+}
+
+.time{
+  font-size: large;
+  justify-content: center;
+  align-items: center;
+  word-break: break-all;
+  word-wrap: break-word;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+.sheMarkDay .van-cell{
+  border-radius: 5rpx;
+  border: 5rpx solid #ff0000;
+  box-shadow: 5rpx 5rpx 5rpx 5rpx #E0E3DA;
+  width: 100%;
+  margin: 5rpx;
+  padding: 5rpx;
+  margin-top: 1vh;
+  margin-right: 1vw;
+  padding-right: 1vw;
+}
+

@@ -1,0 +1,35 @@
+<!--pages/function/function.wxml-->
+
+<!-- NoticeBar 顶部通知栏 -->
+<van-notice-bar left-icon="volume-o" background="#ecf9ff" scrollable color="blue" text="啥也不说了，这个页面可厉害了！！！" />
+
+<view class="function">
+  <view class="functionItem">
+    <van-image width="8rem" height="8rem" fit="contain" src="{{dayImg}}" />
+    <van-button plain round type="primary" size="small" bindtap="markDay">好日子</van-button>
+  </view>
+  <view class="functionItem">
+    <van-image width="8rem" height="8rem" fit="contain" src="{{wishImg}}" />
+    <van-button plain round type="info" size="small" bindtap="wishingTree">许愿树</van-button>
+  </view>
+  <view class="functionItem">
+    <van-image width="8rem" height="8rem" fit="contain" src="{{speechImg}}" />
+    <van-button plain round type="warning" size="small" bindtap="speech">演讲稿</van-button>
+  </view>
+  <view class="functionItem" wx:if="{{openid=='oZLHV4lqw6nzzt_1Z7I1A8PgR8-s' || openid=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}">
+    <van-image width="8rem" height="8rem" fit="contain" src="{{primeImg}}" />
+    <van-button plain round color="#7232dd" size="small" bindtap="prime">最初版</van-button>
+  </view>
+  <view class="functionItem" wx:if="{{openid=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}">
+    <van-image width="8rem" height="8rem" fit="contain" src="{{userListImg}}" />
+    <van-button plain round type="info" size="small" bindtap="userList">用户列表</van-button>
+  </view>
+  <view class="functionItem" wx:if="{{openid=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}">
+    <van-image width="8rem" height="8rem" fit="contain" src="{{feedbackImg}}" />
+    <van-button plain round type="primary" size="small" bindtap="feedback">反馈留言</van-button>
+  </view>
+  <view class="functionItem">
+    <van-image width="8rem" height="8rem" fit="contain" src="{{endImg}}" />
+    <van-button plain round type="danger" size="small" bindtap="end">敬请期待</van-button>
+  </view>
+</view>

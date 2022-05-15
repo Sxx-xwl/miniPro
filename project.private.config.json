@@ -1,0 +1,82 @@
+{
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "许愿树",
+          "pathName": "pages/wishingTreePage/wishingTreePage",
+          "query": "choose= 1",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "功能页面",
+          "pathName": "pages/function/function",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "我的",
+          "pathName": "pages/mySelf/mySelf",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "留言页面",
+          "pathName": "pages/messagePage/messagePage",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "纪念日",
+          "pathName": "pages/markDay/markDay",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "添加纪念日",
+          "pathName": "pages/addmarkDay/addmarkDay",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "最初版本",
+          "pathName": "pages/prime/prime",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "流水账界面",
+          "pathName": "pages/speech/speech",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "添加流水账界面",
+          "pathName": "pages/addSpeech/addSpeech",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "修改流水账",
+          "pathName": "pages/updateSpeech/updateSpeech",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "setting": {
+    "compileHotReLoad": false
+  }
+}

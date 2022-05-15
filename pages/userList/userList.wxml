@@ -1,0 +1,20 @@
+<!--pages/userList/userList.wxml-->
+<!-- 顶部通知栏 -->
+<van-notice-bar color="#1989fa" background="#ecf9ff" left-icon="phone" class="notice">
+  让我看看都谁来过了！👀
+</van-notice-bar>
+<!-- 留言列表 -->
+<view class="messageList">
+  <scroll-view scroll-y="true" class="list" >
+    <view class="list-scroll-view">
+      <block class="commentsBlock" wx:for="{{list}}" wx:key="index">
+
+        <view class="commentPart1">
+          <van-image round width="4rem" height="4rem" src="{{item.portrait}}" />
+          <view class="commentName">{{item.userName}}</view>
+        </view>
+
+      </block>
+    </view>
+  </scroll-view>
+</view>

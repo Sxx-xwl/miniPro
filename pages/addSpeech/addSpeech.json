@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "DatetimePicker": "../../components/DatetimePicker/index"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "请表达你的想法!"
+}

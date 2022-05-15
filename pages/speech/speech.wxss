@@ -1,0 +1,30 @@
+/* pages/speech/speech.wxss */
+
+.speech {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.speechItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2vh;
+  padding-left: 2vh;
+  padding-right: 2vh;
+}
+
+.showTime{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  border-radius: 5%;
+  display: flex;
+  width: 100vw;
+  background-color: rgb(25, 137, 250);
+}

@@ -1,0 +1,9 @@
+<!--pages/login/login.wxml-->
+
+<!-- 背景图片 -->
+<image class="img" src="{{backgroundImg}}"></image>
+
+<!-- 授权按钮 -->
+<view>
+  <van-button icon="star-o" round color="#9999ff" bind:click="getUserInfo" class="add" style="top:60vh;left:73vw;" size="normal"/>
+</view>

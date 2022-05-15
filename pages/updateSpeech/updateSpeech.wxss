@@ -1,0 +1,29 @@
+/* pages/updateSpeech/updateSpeech.wxss */
+page {
+  height: 100%;
+}
+
+.body {
+  padding-top: 5%;
+}
+
+.content .van-cell {
+  display: flex;
+  background-color: #a8f0ed;
+  font-size: small;
+}
+
+.content .van-field__control {
+  color: rgb(0, 0, 0);
+}
+
+.submit {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 3%;
+}
+
+.button .van-button {
+  border-radius: 15%;
+}

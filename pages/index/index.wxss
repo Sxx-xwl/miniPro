@@ -1,0 +1,53 @@
+.timer {
+  color: black;
+}
+
+.topImage {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 3vh;
+  padding-top: 3vh;
+}
+
+.title{
+  color: #000;
+}
+
+.timeAcquaintance{
+  font-size: large;
+  color: #9999ff;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2vh;
+  padding-left: 40rpx;
+}
+
+.timeTogether{
+  font-size: x-large;
+  color: rgb(253, 156, 173);
+  display: flex;
+  justify-content: center;
+  padding-left: 40rpx;
+  padding-bottom: 2vh;
+}
+
+.swiper-container{
+  display: flex;
+  height: 50vh;
+}
+
+.describe{
+  font-size: larger;
+  color: rgb(245, 182, 193);
+  display: flex;
+  justify-content: center;
+  padding-left: 20rpx;
+}
+
+.story{
+  font-size: large;
+  color: #bb99ff;
+  display: flex;
+  justify-content: center;
+}

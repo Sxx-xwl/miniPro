@@ -1,0 +1,60 @@
+<!-- NoticeBar 顶部通知栏 -->
+<van-notice-bar left-icon="volume-o" background="#ecf9ff" scrollable color="#8936b3" text="请发挥出你小学二年级的水平！" />
+
+<!-- 显示内容 -->
+<view class="messageList">
+  <scroll-view scroll-y="true" class="list">
+    <view class="list-scroll-view">
+      <block class="commentsBlock" wx:for="{{speechItemList}}" wx:key="index">
+
+        <view class="commentsInfo" wx:if="{{item.num%2 == 0}}">
+          <view class="commentPart1" wx:if="{{item.openid=='oZLHV4lqw6nzzt_1Z7I1A8PgR8-s'}}">
+            <van-image fit="contain" width="7rem" height="7rem" src="{{item.cloudPath}}" data-src="{{item.cloudPath}}" bindtap="previewImage" />
+            <view class="commentName" data-id="{{item._id}}" bindlongtap="updateItem" style="color: rgb(0, 0, 0);">{{item.text}}</view>
+          </view>
+          <view class="commentPart2" wx:if="{{item.openid=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}">
+            <van-image fit="contain" width="7rem" height="7rem" src="{{item.cloudPath}}" data-src="{{item.cloudPath}}" bindtap="previewImage" />
+            <view class="commentName1" data-id="{{item._id}}" bindlongtap="updateItem" style="color: rgb(48, 95, 250);">{{item.text}}</view>
+          </view>
+        </view>
+        <view class="commentsInfo" wx:if="{{item.num%2 == 1}}">
+          <view class="commentPart1" wx:if="{{item.openid=='oZLHV4lqw6nzzt_1Z7I1A8PgR8-s'}}">
+            <view class="commentName" data-id="{{item._id}}" bindlongtap="updateItem" style="color: rgb(0, 0, 0);">{{item.text}}</view>
+            <van-image fit="contain" width="7rem" height="7rem" src="{{item.cloudPath}}" data-src="{{item.cloudPath}}" bindtap="previewImage" />
+          </view>
+          <view class="commentPart2" wx:if="{{item.openid=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}">
+            <view class="commentName1" data-id="{{item._id}}" bindlongtap="updateItem" style="color: rgb(48, 95, 250);">{{item.text}}</view>
+            <van-image fit="contain" width="7rem" height="7rem" src="{{item.cloudPath}}" data-src="{{item.cloudPath}}" bindtap="previewImage" />
+          </view>
+        </view>
+        <view class="divider"></view>
+
+      </block>
+    </view>
+  </scroll-view>
+</view>
+<view wx:if="{{openid=='oZLHV4lqw6nzzt_1Z7I1A8PgR8-s' || openid=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}">
+  <view class="show" wx:if="{{!display}}">
+    <van-button color="#81e9e6" class="button" bindtap="show">又想写了</van-button>
+  </view>
+  <!-- 添加内容 -->
+  <view class="body" wx:if="{{display}}">
+    <van-cell-group inset class="content">
+      <!-- 添加内容 -->
+      <van-field value="{{ text }}" label="记录内容：" left-icon="comment-circle-o" type="textarea" autosize placeholder="记录吧！" border="{{ false }}" bind:input="getText" />
+      <!-- 添加图片 -->
+      <van-field left-icon="smile-o" center clearable label="记录图片：" placeholder="没图言diao" border="{{ false }}" use-button-slot>
+        <van-button slot="button" round size="small" type="primary" bindtap="chooseImg">
+          点击上传
+        </van-button>
+      </van-field>
+    </van-cell-group>
+    <view class="submit">
+      <van-button color="#81e9e6" class="button" bindtap="addbtn">点击写入</van-button>
+      <van-button color="#81e9e6" class="button" bindtap="notShow">不想写了</van-button>
+    </view>
+  </view>
+</view>
+
+
+<van-dialog id="van-dialog" />
