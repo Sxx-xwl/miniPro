@@ -172,6 +172,7 @@ Page({
       that.showSpeechImgLsit()
     } else if (num == 1) {
       console.log('页面', num)
+      that.showLastList()
     } else if (num == 2) {
       console.log('页面', num)
       that.showReList()
@@ -256,4 +257,45 @@ Page({
         console.error('流水账请求失败', err)
       })
   },
+  //近一个月内容
+  showLastList() {
+    that = this
+    this.setData({
+      screenStartTime: util.formatTimefour(new Date() / 1000, 'Y/M/D h:m:s'),
+      screenEndTime: util.formatTimeTwo(new Date() / 1000, 'Y/M/D h:m:s'),
+    });
+    wx.cloud.database().collection('speechImgList')
+      //条件查询
+      .where({
+        submitTime: _.gte(that.data.screenStartTime).and(_.lt(that.data.screenEndTime))
+      })
+      .get()
+      .then(res => {
+        console.log('流水账时间筛选请求成功', res.data)
+        if (res.data.length == 0) {
+          wx.showToast({
+            title: '这个月没有哦！',
+            icon: 'error'
+          })
+        } else {
+          wx.showToast({
+            title: '查询完毕！',
+          })
+        }
+        that.setData({
+          speechImgList: res.data,
+        })
+        //停止刷新动画
+        wx.stopPullDownRefresh()
+          .then(res => {
+            console.log('刷新停止成功')
+          })
+          .catch(err => {
+            console.log('刷新停止失败')
+          })
+      })
+      .catch(err => {
+        console.error('流水账请求失败', err)
+      })
+  }
 })

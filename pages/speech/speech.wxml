@@ -10,7 +10,7 @@
 <!-- 条件筛选 -->
 <van-tabs active="{{ active }}" bind:change="onChange">
   <van-tab title="全部"></van-tab>
-  <van-tab title="时间筛选">
+  <van-tab title="近一个月">
     <van-dropdown-menu>
       <van-dropdown-item id="item" value="item" title="选择时间" overlay="false">
         <van-datetime-picker type="year-month" value="{{ currentDate }}" bind:confirm="screenTime" min-date="{{ minDate }}" formatter="{{ formatter }}" />
