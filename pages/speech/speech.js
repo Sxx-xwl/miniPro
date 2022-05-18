@@ -269,6 +269,7 @@ Page({
       .where({
         submitTime: _.gte(that.data.screenStartTime).and(_.lt(that.data.screenEndTime))
       })
+      .orderBy('submitTime', 'desc')
       .get()
       .then(res => {
         console.log('流水账时间筛选请求成功', res.data)
@@ -297,5 +298,9 @@ Page({
       .catch(err => {
         console.error('流水账请求失败', err)
       })
-  }
+  },
+  //取消筛选
+  closeTime(){
+    this.selectComponent('#item').toggle();
+  },
 })
