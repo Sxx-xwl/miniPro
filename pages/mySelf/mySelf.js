@@ -74,5 +74,9 @@ Page({
         console.log('FB Add result', res)
       }
     })
+  },
+  //分享
+  onShareAppMessage(){
+    
   }
 })

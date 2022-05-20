@@ -72,7 +72,7 @@ Page({
         } else {
           // console.log(false)
           //没查到 添加一个吧
-          that.addUserInfo(app.globalData.userName, app.globalData.portrait, app.globalData.times)
+          that.addUserInfo(app.globalData.userName, app.globalData.portrait, 1)
         }
         console.log("云函数调用成功", res)
         wx.switchTab({
@@ -122,7 +122,7 @@ Page({
         console.log('callFunction update ', res.result.stats)
         if (app.globalData.openid == 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s') {
           wx.showToast({
-            title: '来啦来啦？大哥爱你！',
+            title: '哟！宝，大哥爱你！',
             icon: 'none'
           })
         } else if (app.globalData.openid == 'oZLHV4n8chsAEruzEztUEUaCXB_Q') {
@@ -132,7 +132,17 @@ Page({
           })
         } else if (app.globalData.openid == 'oZLHV4vgHB0kIHRdwybT0lECiBQ0') {
           wx.showToast({
-            title: '专业英语过了么？',
+            title: '四级过了么？遥遥有期了么？毕业了么？',
+            icon: 'none'
+          })
+        } else if (app.globalData.openid == 'oZLHV4pcqqtvYOaGr5STfQzTNVSk') {
+          wx.showToast({
+            title: '不能欺负小丽奥！',
+            icon: 'none'
+          })
+        } else if (app.globalData.openid == 'oZLHV4h8IaAVj_NYMvDL0LvtG54k') {
+          wx.showToast({
+            title: '不能欺负小丽奥！',
             icon: 'none'
           })
         } else {
