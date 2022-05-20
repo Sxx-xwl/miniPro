@@ -15,7 +15,10 @@
             <view class="commentName">{{item.userName}}</view>
           </view>
           <view class="commentPart2">
-            <view class="comment">{{item.comments}}</view>
+            <view class="commentPart3">
+              <view class="comment" wx:if="{{item.comments}}">{{item.comments}}</view>
+              <van-image class="img" width="5rem" height="5rem" fit="contain" wx:if="{{item.cloudPath}}" src="{{item.cloudPath}}" />
+            </view>
             <view class="commentData">{{item.submitTime}}</view>
           </view>
         </view>
@@ -32,7 +35,8 @@
   <van-cell-group inset class="messagePanel">
     <van-field bind:change='onChange' value="{{ comments }}" rows="2" left-icon="comment" right-icon="info-o" label="留言板：" type="textarea" maxlength="49" placeholder="你想跟大家说点啥？？？" show-word-limit />
     <van-cell>
-      <van-button icon="volume-o" type="info" size="small" round bindtap="addComments">说</van-button>
+      <van-button icon="smile-o" round size="small" type="primary" bindtap="chooseImg">斗图</van-button>
+      <van-button icon="volume-o" type="info" size="small" round bindtap="addComments">发送</van-button>
     </van-cell>
   </van-cell-group>
 </view>

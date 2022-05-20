@@ -134,6 +134,8 @@ Page({
   },
   //上传文件的第二步：直接上传到云存储
   uploadFile(filePath, fileName) {
+    that = this
+
     let text = that.data.text
     let mark = that.data.mark
 

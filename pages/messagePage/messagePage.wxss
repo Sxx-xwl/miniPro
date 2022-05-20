@@ -60,6 +60,12 @@ page {
   padding-right: 2%;
 }
 
+.commentPart3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .comment {
   word-break: break-all;
   word-wrap: break-word;
@@ -102,5 +108,4 @@ page {
   right: 0;
   left: 0;
   bottom: 0;
-
 }

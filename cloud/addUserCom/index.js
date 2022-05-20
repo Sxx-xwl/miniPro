@@ -18,7 +18,9 @@ exports.main = async (event, context) => {
       portrait: event.portrait,
       comments: event.comments,
       submitTime: event.submitTime,
-      updateTime: event.updateTime
+      updateTime: event.updateTime,
+      cloudPath: event.cloudPath,
+      state: event.state,
     }
   })
 
