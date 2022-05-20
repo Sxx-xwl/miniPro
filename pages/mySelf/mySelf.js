@@ -75,8 +75,4 @@ Page({
       }
     })
   },
-  //分享
-  onShareAppMessage(){
-    
-  }
 })

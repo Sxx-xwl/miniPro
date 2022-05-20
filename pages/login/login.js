@@ -28,8 +28,13 @@ Page({
         // that.addUserInfo(user.nickName, user.avatarUrl)
         app.globalData.userName = user.nickName
         app.globalData.portrait = user.avatarUrl
+        let times = 1;
         // console.log("全局用户姓名", app.globalData.userName) 
-        that.selectUserInfo()
+        that.addUserInfo(user.nickName, user.avatarUrl, times)
+        console.log("云函数调用成功", res)
+        wx.switchTab({
+          url: '../index/index'
+        });
       },
     })
   },
@@ -39,19 +44,21 @@ Page({
     that.setData({
       openid: app.globalData.openid
     })
-    if(that.data.openid=="oZLHV4n8chsAEruzEztUEUaCXB_Q")
-    {
+    wx.showLoading({
+      title: '让我找找你是谁',
+    })
+    if (that.data.openid == "oZLHV4n8chsAEruzEztUEUaCXB_Q") {
       wx.cloud.database().collection('wxUser')
-      .where({
-        _openid: "oZLHV4lqw6nzzt_1Z7I1A8PgR8-s"
-      })
-      .get()
-      .then(res =>{
-        // console.log("女朋友信息：",res.data[0].times)
-        app.globalData.shetimes = res.data[0].times;
-        // console.log("女朋友信息：",res.data[0].updateTime)
-        app.globalData.shetime = res.data[0].updateTime;
-      })
+        .where({
+          _openid: "oZLHV4lqw6nzzt_1Z7I1A8PgR8-s"
+        })
+        .get()
+        .then(res => {
+          // console.log("女朋友信息：",res.data[0].times)
+          app.globalData.shetimes = res.data[0].times;
+          // console.log("女朋友信息：",res.data[0].updateTime)
+          app.globalData.shetime = res.data[0].updateTime;
+        })
     }
     //云函数的调用
     wx.cloud.callFunction({
@@ -62,22 +69,25 @@ Page({
       success(res) {
         // console.log('数据类型：',typeof app.globalData.openid)
         //result 用户数据
-        console.log('用户数据', res)
+        console.log('用户数据', res.result)
         let result = res.result.data[0];
         if (result != null) {
           // console.log(result.userName,result.portrait)
+          app.globalData.userName = result.userName
+          app.globalData.portrait = result.portrait
           //查到了 更新一下吧
           app.globalData.times = result.times + 1;
           that.updateUserInfo(app.globalData.userName, app.globalData.portrait, app.globalData.times)
+          console.log("云函数调用成功", res)
+          wx.switchTab({
+            url: '../index/index'
+          });
         } else {
           // console.log(false)
           //没查到 添加一个吧
-          that.addUserInfo(app.globalData.userName, app.globalData.portrait, 1)
+          // that.addUserInfo(app.globalData.userName, app.globalData.portrait, 1)
+          that.getUserInfo();
         }
-        console.log("云函数调用成功", res)
-        wx.switchTab({
-          url: '../index/index'
-        });
       },
       fail(err) {
         console.error("云函数调用失败", err);
@@ -102,7 +112,7 @@ Page({
         console.log('callFunction Add result', res)
       }
     })
-
+    
   },
   //更新微信用户信息
   updateUserInfo(userName, portrait, times) {

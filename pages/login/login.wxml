@@ -5,5 +5,5 @@
 
 <!-- 授权按钮 -->
 <view>
-  <van-button icon="star-o" round color="#9999ff" bind:click="getUserInfo" class="add" style="top:60vh;left:73vw;" size="normal"/>
+  <van-button icon="star-o" round color="#9999ff" bind:click="selectUserInfo" class="add" style="top:60vh;left:73vw;" size="normal"/>
 </view>
