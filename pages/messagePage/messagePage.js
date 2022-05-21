@@ -121,6 +121,12 @@ Page({
   },
   //上传图片
   chooseImg(event) {
+    if(app.globalData.openid == 'oZLHV4vgHB0kIHRdwybT0lECiBQ0'){
+      wx.showToast({
+        title: '别想了！',
+        icon: 'error'
+      })
+    }
     //上传到云存储
     wx.chooseImage({
       count: 1, //选择的图片数量
@@ -162,6 +168,7 @@ Page({
           wx.showToast({
             title: '行，大家都知道了！',
           })
+          that.onPullDownRefresh();
         },
         fail: res => {
           console.error('Com Add result', res)
@@ -186,7 +193,7 @@ Page({
             comments: comments,
             cloudPath: res.fileID,
             updateTime: util.formatTime(new Date()),
-            state: 1,
+            state: 2,
             submitTime: util.formatTime(new Date())
           },
           success: res => {
@@ -198,6 +205,7 @@ Page({
             wx.showToast({
               title: '行，大家都知道了！',
             })
+            that.onPullDownRefresh();
           },
           fail: res => {
             console.error('Com Add result', res)
