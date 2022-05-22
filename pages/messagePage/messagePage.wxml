@@ -3,32 +3,47 @@
 <van-notice-bar color="#1989fa" background="#ecf9ff" left-icon="phone" class="notice">
   别瞎扯奥！你已经进入网警的监控范围了！👀
 </van-notice-bar>
+
 <!-- 留言列表 -->
 <view class="messageList">
   <scroll-view scroll-y="true" class="list">
     <view class="list-scroll-view">
       <block class="commentsBlock" wx:for="{{list}}" wx:key="index">
 
-        <view class="commentsInfo">
+        <view class="commentsInfo" wx:if="{{item.comments||item.cloudPath}}">
           <view class="commentPart1">
             <van-image round width="2rem" height="2rem" src="{{item.portrait}}" />
             <view class="commentName">{{item.userName}}</view>
           </view>
           <view class="commentPart2">
-            <view class="commentPart3">
+            <view class="commentPart3" wx:if="{{openid=='oZLHV4lqw6nzzt_1Z7I1A8PgR8-s'}}">
+              <!-- 长按修改 -->
+              <view class="comment" data-id="{{item._id}}" data-comments="{{item.comments}}" bindlongpress="updateCom" 
+              data-openid="{{item._openid}}" wx:if="{{item.comments}}">{{item.comments}}</view>
+              <van-image class="img" width="5rem" height="5rem" fit="contain" wx:if="{{item.cloudPath}}" src="{{item.cloudPath}}" />
+            </view>
+            <view class="commentPart3" wx:if="{{openid=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}">
+              <!-- 长按修改 -->
+              <view class="comment" data-id="{{item._id}}" data-comments="{{item.comments}}" bindlongpress="updateCom" 
+              data-cloudPath="{{item.cloudPath}}" data-openid="{{item._openid}}" wx:if="{{item.comments}}">{{item.comments}}</view>
+              <!-- 长按删除 -->
+              <van-image class="img" width="5rem" data-id="{{item._id}}" height="5rem" fit="contain" wx:if="{{item.cloudPath}}" 
+              data-cloudPath="{{item.cloudPath}}" bindlongpress="deleteImg" src="{{item.cloudPath}}" />
+            </view>
+            <view class="commentPart3" wx:if="{{openid!='oZLHV4lqw6nzzt_1Z7I1A8PgR8-s' && openid!='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}">
+              <!-- 长按修改 -->
               <view class="comment" wx:if="{{item.comments}}">{{item.comments}}</view>
               <van-image class="img" width="5rem" height="5rem" fit="contain" wx:if="{{item.cloudPath}}" src="{{item.cloudPath}}" />
             </view>
             <view class="commentData">{{item.submitTime}}</view>
           </view>
         </view>
-        <view class="divider"></view>
+        <view class="divider" wx:if="{{item.comments||item.cloudPath}}"></view>
 
       </block>
     </view>
   </scroll-view>
 </view>
-
 
 <!-- 留言区域 -->
 <view class="messagePanelParent">
@@ -40,3 +55,39 @@
     </van-cell>
   </van-cell-group>
 </view>
+
+<!-- 删除图片窗口 -->
+<van-overlay show="{{ show1 }}">
+  <view class="wrapper">
+    <view class="block">
+      <view class="but">
+        <view>
+          <van-button color="#272643" plain bindtap="onClickHide">取消</van-button>
+        </view>
+        <view>
+          <van-button color="#f66fb9" plain bindtap="delete">删除</van-button>
+        </view>
+      </view>
+    </view>
+  </view>
+</van-overlay>
+<!-- 修改留言窗口 -->
+<van-overlay show="{{ show }}">
+  <view class="wrapper">
+    <view class="block">
+      <van-field class="text" bind:change='comInput' value="{{ selectCom }}" title-width='3em'
+      left-icon="comment" autosize label="内容:" type="textarea" maxlength="49"  show-word-limit />
+      <view class="but">
+        <view>
+          <van-button color="#272643" plain bindtap="onClickHide">取消</van-button>
+        </view>
+        <view>
+          <van-button color="#f66fb9" plain bindtap="update">修改</van-button>
+        </view>
+      </view>
+    </view>
+  </view>
+</van-overlay>
+
+<!-- 确认窗口 -->
+<van-dialog id="van-dialog" />

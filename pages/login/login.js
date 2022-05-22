@@ -112,7 +112,7 @@ Page({
         console.log('callFunction Add result', res)
       }
     })
-    
+
   },
   //更新微信用户信息
   updateUserInfo(userName, portrait, times) {
@@ -152,7 +152,7 @@ Page({
           })
         } else if (app.globalData.openid == 'oZLHV4h8IaAVj_NYMvDL0LvtG54k') {
           wx.showToast({
-            title: '不能欺负小丽奥！',
+            title: '你的建议我做不了主！去找小丽吧！',
             icon: 'none'
           })
         } else {

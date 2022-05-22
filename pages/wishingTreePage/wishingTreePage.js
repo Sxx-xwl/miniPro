@@ -391,7 +391,7 @@ Page({
           data: {
             selectId: that.data.selectId,
             state: 2,
-            submitTime: util.formatTime(new Date())
+            updateTime: util.formatTime(new Date())
           },
           success: res => {
             console.log('愿望删除成功', res.result)
