@@ -15,12 +15,12 @@ Page({
     that.updateMarkDay(time)
   },
   //获取微信用户信息
-  getUserInfo() {
+  getUserProfile() {
     that = this
     console.log('点击获取用户信息')
     wx.getUserProfile({
       desc: '用于完善个人信息',
-      success(res) {
+      success: (res) => {
         let user = res.userInfo
         console.log('获取到的用户信息:', user)
         app.globalData.userInfo = user
@@ -47,7 +47,7 @@ Page({
     wx.showLoading({
       title: '让我找找你是谁',
     })
-    if (that.data.openid == "oZLHV4n8chsAEruzEztUEUaCXB_Q") {
+    if (app.globalData.openid == "oZLHV4n8chsAEruzEztUEUaCXB_Q") {
       wx.cloud.database().collection('wxUser')
         .where({
           _openid: "oZLHV4lqw6nzzt_1Z7I1A8PgR8-s"
@@ -85,8 +85,12 @@ Page({
         } else {
           // console.log(false)
           //没查到 添加一个吧
-          // that.addUserInfo(app.globalData.userName, app.globalData.portrait, 1)
-          that.getUserInfo();
+          // that.getUserProfile(app.globalData.userName, app.globalData.portrait, 1)
+          // this.getUserProfile();
+          wx.showToast({
+            title: '点左边',
+          })
+          // wx.hideLoading()
         }
       },
       fail(err) {

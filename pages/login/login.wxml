@@ -1,9 +1,13 @@
 <!--pages/login/login.wxml-->
 
+<!-- NoticeBar 顶部通知栏 -->
+<van-notice-bar left-icon="volume-o" background="#f0b78f" color="black" text="第一次登陆点左边，否则推荐右边！" />
+
 <!-- 背景图片 -->
 <image class="img" src="{{backgroundImg}}"></image>
 
 <!-- 授权按钮 -->
 <view>
-  <van-button icon="star-o" round color="#9999ff" bind:click="selectUserInfo" class="add" style="top:60vh;left:73vw;" size="normal"/>
+  <van-button icon="star-o" round color="#f3b4a5" bind:click="selectUserInfo" class="into" style="top:80vh;left:78vw;" size="normal"/>
+  <van-button icon="eye" round color="#aa7e74" bind:click="getUserProfile" class="add" style="top:80vh;left:15vw;" size="normal"/>
 </view>
