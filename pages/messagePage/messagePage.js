@@ -76,7 +76,8 @@ Page({
     let comments = that.data.comments
     let tempFilePaths = that.data.tempFilePaths[0]
     let len = that.data.list.length
-    if (!comments.replace(/\s+/g, '').length != 0 && tempFilePaths.length == 0) {
+    let newComments = comments.replace(/\s+/g, '')
+    if ((comments == null || newComments.length == 0) && (tempFilePaths == null || tempFilePaths.length == 0)) {
       wx.showToast({
         title: '你倒是说啊！',
         icon: 'error'
@@ -246,9 +247,10 @@ Page({
   //修改留言 x
   updateCom(e) {
     that = this
-    if(app.globalData.openid=='oZLHV4lqw6nzzt_1Z7I1A8PgR8-s'){
-      if(e.currentTarget.dataset.openid!='oZLHV4lqw6nzzt_1Z7I1A8PgR8-s')
-      {return}
+    if (app.globalData.openid == 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s') {
+      if (e.currentTarget.dataset.openid != 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s') {
+        return
+      }
     }
     console.log(e.currentTarget.dataset)
     that.setData({
@@ -283,7 +285,7 @@ Page({
         wx.cloud.callFunction({
           name: "updateUserCom",
           data: {
-            id:that.data.selectId,
+            id: that.data.selectId,
             comments: that.data.selectCom,
             updateTime: util.formatTime(new Date()),
             cloudPath: that.data.cloudPath,
@@ -312,7 +314,7 @@ Page({
       })
   },
   //删除图片
-  deleteImg(e){
+  deleteImg(e) {
     console.log(e)
     that.setData({
       show1: true,
@@ -322,7 +324,7 @@ Page({
     });
   },
   //确认删除
-  delete(){
+  delete() {
     that = this
     console.log("update")
     console.log(that.data.selectCom)
@@ -336,7 +338,7 @@ Page({
         wx.cloud.callFunction({
           name: "updateUserCom",
           data: {
-            id:that.data.selectId,
+            id: that.data.selectId,
             comments: that.data.selectCom,
             updateTime: util.formatTime(new Date()),
             cloudPath: '',

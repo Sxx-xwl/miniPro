@@ -48,10 +48,10 @@
 <!-- 留言区域 -->
 <view class="messagePanelParent">
   <van-cell-group inset class="messagePanel">
-    <van-field bind:change='onChange' value="{{ comments }}" rows="2" left-icon="comment" right-icon="info-o" label="留言板：" type="textarea" maxlength="49" placeholder="你想跟大家说点啥？？？" show-word-limit />
+    <van-field bind:change='onChange' value="{{ comments }}" rows="2" left-icon="comment" right-icon="info-o" label="留言板：" type="textarea" maxlength="49" placeholder="讲讲！！！" show-word-limit />
     <van-cell>
-      <van-button icon="smile-o" round size="small" type="primary" bindtap="chooseImg">斗图</van-button>
-      <van-button icon="volume-o" type="info" size="small" round bindtap="addComments">发送</van-button>
+      <van-button icon="smile-o" round size="small" type="primary" bindtap="chooseImg">Img</van-button>
+      <van-button icon="volume-o" type="info" size="small" round bindtap="addComments">submit</van-button>
     </van-cell>
   </van-cell-group>
 </view>
