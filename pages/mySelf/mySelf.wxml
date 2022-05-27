@@ -22,7 +22,7 @@
       <van-cell title="上次来访时间：" value="{{time}}" class="shetime"/>
     </van-cell-group>
     <view class="bottom">
-      <view class="environment">version：2.4.0</view>
+      <view class="environment">version：2.4.2</view>
     </view>
   </view>
 </view>
