@@ -6,6 +6,12 @@ App({
   onLaunch() {
     that = this
     //云开发初始化
+    var nowTime = Date.parse(new Date())
+    var delineTime = Date.parse('2022-5-31 21:00:00')
+    if(nowTime > delineTime){
+      that.globalData.goOut = false
+    }
+    // console.log(delineTime - nowTime)
     console.log('小程序开始启动了！')
     wx.cloud.init({
       env: 'cloud1-1gb52715000caddc'
@@ -46,6 +52,7 @@ App({
     times: 1,
     shetimes: 0,
     shetime: '',
+    goOut: true,
   },
   // 通过云函数获取用户 openid，支持回调或 Promise
   getUserOpenIdViaCloud() {
@@ -63,11 +70,9 @@ App({
       return res.result.openid
     })
   },
-
   //获取当前时间戳
   getTimeStamp() {
     var newDateTime = Date.parse(new Date())
     return newDateTime;
   }
-
 })

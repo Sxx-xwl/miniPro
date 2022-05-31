@@ -46,7 +46,7 @@
 </view>
 
 <!-- 留言区域 -->
-<view class="messagePanelParent">
+<view class="messagePanelParent" wx:if="{{!goOut}}">
   <van-cell-group inset class="messagePanel">
     <van-field bind:change='onChange' value="{{ comments }}" rows="2" left-icon="comment" right-icon="info-o" label="留言板：" type="textarea" maxlength="49" placeholder="讲讲！！！" show-word-limit />
     <van-cell>

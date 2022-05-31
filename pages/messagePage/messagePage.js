@@ -22,6 +22,7 @@ Page({
     selectCom: '',
     selectId: '',
     cloudPath: '',
+    goOut: true,
   },
   //生命周期函数--监听页面加载
   onLoad(options) {
@@ -29,6 +30,7 @@ Page({
     console.log(app.globalData.openid)
     that.setData({
       openid: app.globalData.openid,
+      goOut: app.globalData.goOut,
     })
     //刷新页面
     wx.startPullDownRefresh()
