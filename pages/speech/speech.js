@@ -61,16 +61,15 @@ Page({
   //显示流水账列表
   showSpeechImgLsit() {
     that = this
-    wx.cloud.database().collection('speechImgList')
-      .where({
-        state: '1'
-      })
-      .orderBy('submitTime', 'desc')
-      .get()
-      .then(res => {
-        console.log('流水账请求成功', res.data)
+    wx.cloud.callFunction({
+      name: "selectSpeech",
+      // data: {
+      //   _openid: app.globalData.openid
+      // },
+      success(res) {
+        console.log('流水账请求成功', res.result.data)
         that.setData({
-          speechImgList: res.data
+          speechImgList: res.result.data
         })
         //停止刷新动画
         wx.stopPullDownRefresh()
@@ -80,10 +79,11 @@ Page({
           .catch(err => {
             console.log('刷新停止失败')
           })
-      })
-      .catch(err => {
+      },
+      fail(err) {
         console.error('流水账请求失败', err)
-      })
+      }
+    })
   },
   //上传图片
   chooseImg(event) {
@@ -181,15 +181,15 @@ Page({
   //显示倒叙列表 _openid
   showReList() {
     that = this
-    wx.cloud.database().collection('speechImgList')
-      .where({
-        state: '1'
-      })
-      .get()
-      .then(res => {
-        console.log('流水账请求成功', res.data)
+    wx.cloud.callFunction({
+      name: "selectSpeechOrder",
+      // data: {
+      //   _openid: app.globalData.openid
+      // },
+      success(res) {
+        console.log('流水账请求成功', res.result.data)
         that.setData({
-          speechImgList: res.data
+          speechImgList: res.result.data
         })
         //停止刷新动画
         wx.stopPullDownRefresh()
@@ -199,10 +199,11 @@ Page({
           .catch(err => {
             console.log('刷新停止失败')
           })
-      })
-      .catch(err => {
+      },
+      fail(err) {
         console.error('流水账请求失败', err)
-      })
+      }
+    })
   },
   //显示筛选后的列表 year mon
   screenTime(event) {
@@ -217,20 +218,15 @@ Page({
     });
     // console.log('时间1：', that.data.screenStartTime)
     // console.log('时间2：', that.data.screenEndTime)
-    wx.cloud.database().collection('speechImgList')
-      //条件查询
-      .where({
-        submitTime: _.gte(that.data.screenStartTime).and(_.lt(that.data.screenEndTime))
-      })
-      // .where(_.and([{
-      //   submitTime: _.gte(that.data.screenStartTime).and(_.lte(that.data.screenEndTime))
-      // }, {
-      //   state: 1
-      // }]))
-      .get()
-      .then(res => {
-        console.log('流水账时间筛选请求成功', res.data)
-        if (res.data.length == 0) {
+    wx.cloud.callFunction({
+      name: "selectSpeechByTime",
+      data: {
+        screenStartTime: that.data.screenStartTime,
+        screenEndTime: that.data.screenEndTime
+      },
+      success(res) {
+        console.log('流水账时间筛选请求成功', res.result.data)
+        if ( res.result.data.length == 0) {
           wx.showToast({
             title: '这个月没有哦！',
             icon: 'error'
@@ -241,9 +237,9 @@ Page({
           })
         }
         that.setData({
-          speechImgList: res.data,
+          speechImgList:  res.result.data,
         })
-        this.selectComponent('#item').toggle();
+        that.selectComponent('#item').toggle();
         //停止刷新动画
         wx.stopPullDownRefresh()
           .then(res => {
@@ -252,10 +248,11 @@ Page({
           .catch(err => {
             console.log('刷新停止失败')
           })
-      })
-      .catch(err => {
+      },
+      fail(err) {
         console.error('流水账请求失败', err)
-      })
+      }
+    })
   },
   //近一个月内容
   showLastList() {
@@ -264,16 +261,15 @@ Page({
       screenStartTime: util.formatTimefour(new Date() / 1000, 'Y/M/D h:m:s'),
       screenEndTime: util.formatTimeTwo(new Date() / 1000, 'Y/M/D h:m:s'),
     });
-    wx.cloud.database().collection('speechImgList')
-      //条件查询
-      .where({
-        submitTime: _.gte(that.data.screenStartTime).and(_.lt(that.data.screenEndTime))
-      })
-      .orderBy('submitTime', 'desc')
-      .get()
-      .then(res => {
-        console.log('流水账时间筛选请求成功', res.data)
-        if (res.data.length == 0) {
+    wx.cloud.callFunction({
+      name: "selectSpeechByTime",
+      data: {
+        screenStartTime: that.data.screenStartTime,
+        screenEndTime: that.data.screenEndTime
+      },
+      success(res) {
+        console.log('流水账时间筛选请求成功', res)
+        if (res.result.data.length == 0) {
           wx.showToast({
             title: '这个月没有哦！',
             icon: 'error'
@@ -284,7 +280,7 @@ Page({
           })
         }
         that.setData({
-          speechImgList: res.data,
+          speechImgList: res.result.data,
         })
         //停止刷新动画
         wx.stopPullDownRefresh()
@@ -294,13 +290,14 @@ Page({
           .catch(err => {
             console.log('刷新停止失败')
           })
-      })
-      .catch(err => {
+      },
+      fail(err) {
         console.error('流水账请求失败', err)
-      })
+      }
+    })
   },
   //取消筛选
-  closeTime(){
+  closeTime() {
     this.selectComponent('#item').toggle();
   },
 })
