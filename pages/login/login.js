@@ -112,7 +112,7 @@ Page({
           app.globalData.portrait = result.portrait
           //查到了 更新一下吧
           app.globalData.times = result.times + 1;
-          that.updateUserInfo(app.globalData.userName, app.globalData.portrait, app.globalData.times)
+          that.updateUserInfo(app.globalData.userName, app.globalData.portrait, app.globalData.times,result.say)
           console.log("云函数调用成功", res)
           wx.switchTab({
             url: '../index/index'
@@ -151,10 +151,9 @@ Page({
         console.log('callFunction Add result', res)
       }
     })
-
   },
   //更新微信用户信息
-  updateUserInfo(userName, portrait, times) {
+  updateUserInfo(userName, portrait, times,say) {
     that = this
     console.log(userName, ' ', portrait)
     wx.cloud.callFunction({
@@ -167,31 +166,31 @@ Page({
         times: times
       },
       complete: res => {
-        console.log('callFunction update result', res)
-        console.log('callFunction update ', res.result.stats)
+        // console.log('callFunction update result', res)
+        // console.log('callFunction update ', res.result.stats)
         if (app.globalData.openid == 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s') {
           wx.showToast({
-            title: '哟！宝，大哥爱你！',
+            title: say,
             icon: 'none'
           })
         } else if (app.globalData.openid == 'oZLHV4n8chsAEruzEztUEUaCXB_Q') {
           wx.showToast({
-            title: '又有bug了？？',
+            title: say,
             icon: 'none'
           })
         } else if (app.globalData.openid == 'oZLHV4vgHB0kIHRdwybT0lECiBQ0') {
           wx.showToast({
-            title: '四级过了么？遥遥有期了么？毕业了么？',
+            title: say,
             icon: 'none'
           })
         } else if (app.globalData.openid == 'oZLHV4pcqqtvYOaGr5STfQzTNVSk') {
           wx.showToast({
-            title: '不能欺负小丽奥！',
+            title: say,
             icon: 'none'
           })
         } else if (app.globalData.openid == 'oZLHV4h8IaAVj_NYMvDL0LvtG54k') {
           wx.showToast({
-            title: '你的建议我做不了主！去找小丽吧！',
+            title: say,
             icon: 'none'
           })
         } else {
