@@ -12,7 +12,7 @@
         {
           "name": "功能页面",
           "pathName": "pages/function/function",
-          "query": "",
+          "query": "app.globalData.openid =oZLHV4n8chsAEruzEztUEUaCXB_Q",
           "launchMode": "default",
           "scene": null
         },

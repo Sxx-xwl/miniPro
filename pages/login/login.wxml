@@ -8,6 +8,6 @@
 
 <!-- 授权按钮 -->
 <view>
-  <van-button icon="star-o" round color="#f3b4a5" bind:click="selectUserInfo" class="into" style="top:80vh;left:78vw;" size="normal"/>
-  <van-button icon="eye" round color="#aa7e74" bind:click="getUserProfile" class="add" style="top:80vh;left:15vw;" size="normal"/>
+  <!-- <van-button icon="star-o" round color="#f3b4a5" bind:click="selectUserInfo" class="into" style="top:80vh;left:78vw;" size="normal"/> -->
+  <van-button icon="eye" round color="#aa7e74" bind:click="getUserProfile" class="add" style="top:80vh;left:46vw;" size="normal"/>
 </view>
