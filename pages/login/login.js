@@ -17,7 +17,6 @@ Page({
     let time = util.formatTime(new Date())
     that.selectUserInfo()
     that.updateMarkDay(time)
-    that.selectCount()
   },
   //获取微信用户信息
   getUserProfile() {
@@ -114,7 +113,11 @@ Page({
         success(res) {
           // console.log('数据类型：',typeof app.globalData.openid)
           //result 用户数据
-          console.log('用户数据', res.result)
+          // console.log('用户数据', res.result)
+          console.log('用户数据speechCount', res.result.data[0].speechCount)
+          let wishCount = res.result.data[0].wishCount;
+          let speechCount = res.result.data[0].speechCount;
+          let markDayCount = res.result.data[0].markDayCount;
           let result = res.result.data[0];
           if (result != null) {
             // console.log(result.userName,result.portrait)
@@ -126,8 +129,8 @@ Page({
             console.log("云函数调用成功", res)
             //延时函数
             setTimeout(() => {
-              wx.switchTab({
-                url: '../index/index'
+              wx.redirectTo({
+                url: '../index/index?speechCount=' + speechCount +'&markDayCount=' + markDayCount + '&wishCount=' + wishCount
               })
             }, 1000)
           } else {
@@ -178,7 +181,10 @@ Page({
         userName: userName,
         portrait: portrait,
         updateTime: util.formatTime(new Date()),
-        times: times
+        times: times,
+        markDayCount: app.globalData.markDayCount,
+        speechCount: app.globalData.speechCount,
+        wishCount: app.globalData.wishCount,
       },
       complete: res => {
         // console.log('callFunction update result', res)
@@ -195,10 +201,6 @@ Page({
             wx.showToast({
               title: say,
               icon: 'none'
-            })
-            wx.showTabBarRedDot({
-              // index 是导航栏的索引 就是在第几个导航上显示
-              index: 1,
             })
           } else if (app.globalData.openid == 'oZLHV4vgHB0kIHRdwybT0lECiBQ0') {
             wx.showToast({
@@ -237,21 +239,6 @@ Page({
       },
       fail: err => {
         console.error('纪念日修改失败', err)
-      }
-    })
-  },
-  //查找消息数
-  selectCount() {
-    wx.cloud.callFunction({
-      name: "selectSpeechItem",
-      success(res) {
-        console.log('流水账数量查询成功', res.result)
-        // that.setData({
-        //   speechCount: res.result
-        // })
-      },
-      fail(err) {
-        console.error('流水账数量查询失败', err)
       }
     })
   },

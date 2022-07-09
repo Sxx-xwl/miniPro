@@ -18,6 +18,9 @@ exports.main = async (event, context) => {
       portrait: event.portrait,
       updateTime: event.updateTime,
       times: event.times,
+      markDayCount: event.markDayCount,
+      speechCount: event.speechCount,
+      wishCount: event.wishCount,
     }
   })
     

@@ -12,35 +12,28 @@ Page({
     topImage: app.getImgSrc('首页顶部圆图.jpg'),
     showTime: false,
     imageList: '',
+    wishCount: '',
+    markDayCount: '',
+    speechCount: '',
   },
-  onLoad() {
-    that = this
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var that = this
     //获取当前时间
     // let time = util.formatTime(new Date());
     that.timeAcquaintance();
     that.timeTogether();
     that.getimageList();
-    // console.log('list111', that.data.imageList)
+    // that.setData({
+    //   wishCount: options.wishCount,
+    //   markDayCount: options.markDayCount,
+    //   speechCount: options.speechCount,
+    // })
+    that.searchState(options.wishCount, options.markDayCount, options.speechCount);
   },
-  /*onChange(event) {
-    this.setData({
-      activeName: event.detail,
-    });
-  },
-  collapseChange(event) {
-    that = this
-    console.log(event.currentTarget.dataset)
-    let activeNames = event.currentTarget.dataset
-  },
-  //底部导航栏高亮
-  tabberChange(event) {
-    that = this
-    console.log(event)
-    let active = event.currentTarget.dataset.name
-    that.setData({
-      active: active
-    })
-  },*/
   //计时函数1  1000ms(1s)刷新一次 
   timeAcquaintance() {
     that = this
@@ -129,5 +122,33 @@ Page({
     })
     wx.stopPullDownRefresh()
     console.log('停止了刷新')
-  }
+  },
+  //查询是否更新了
+  searchState(w, m, s) {
+    if (w != app.globalData.wishCount || m != app.globalData.markDayCount || s != app.globalData.speechCount) {
+      if (w != app.globalData.wishCount) {
+        app.globalData.wishShow = true
+      }
+      if (m != app.globalData.markDayCount) {
+        app.globalData.markDayShow = true
+      }
+      if (s != app.globalData.speechCount) {
+        app.globalData.speechShow = true
+      }
+      app.globalData.newmarkDayCount = m
+      app.globalData.newwishCount = w
+      app.globalData.newspeechCount = s
+      //消息提示
+      wx.showTabBarRedDot({
+        // index 是导航栏的索引 就是在第几个导航上显示
+        index: 1,
+      })
+    } else {
+      //取消消息提示
+      wx.hideTabBarRedDot({
+        // index 是导航栏的索引 就是在第几个导航上显示
+        index: 1,
+      })
+    }
+  },
 });

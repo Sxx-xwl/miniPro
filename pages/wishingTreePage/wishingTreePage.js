@@ -57,6 +57,9 @@ Page({
   //生命周期函数--监听页面加载
   onLoad: function (options) {
     that = this
+    if (app.globalData.wishShow) {
+      that.updateCount()
+    }
     //刷新页面
     // wx.startPullDownRefresh()
     that.showWisgLsit()
@@ -87,7 +90,7 @@ Page({
         title: '放心写价格！',
         icon: 'error'
       })
-    // } else if (!tempFilePaths.replace(/\s+/g, '').length != 0) {
+      // } else if (!tempFilePaths.replace(/\s+/g, '').length != 0) {
     } else if (!tempFilePaths) {
       wx.showToast({
         title: '传个图片！',
@@ -306,7 +309,7 @@ Page({
   showDelete(e) {
     // console.log('b1')
     that = this
-    console.log('我的权限：',app.globalData.openid)
+    console.log('我的权限：', app.globalData.openid)
     if (app.globalData.openid != 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s' && app.globalData.openid != 'oZLHV4n8chsAEruzEztUEUaCXB_Q') {
       wx.showToast({
         title: '你没权限删除哦',
@@ -437,5 +440,25 @@ Page({
         choose: 1
       })
     }
+  },
+  //更新愿望数
+  updateCount() {
+    wx.cloud.callFunction({
+      name: "updateUserInfo",
+      data: {
+        _openid: app.globalData.openid,
+        userName: app.globalData.userName,
+        portrait: app.globalData.portrait,
+        updateTime: util.formatTime(new Date()),
+        times: app.globalData.times,
+        markDayCount: app.globalData.markDayCount,
+        speechCount: app.globalData.speechCount,
+        wishCount: app.globalData.wishCount,
+      },
+      complete: res => {
+        console.log('更新用户纪念日数成功', res)
+        app.globalData.wishShow = false
+      }
+    })
   },
 })

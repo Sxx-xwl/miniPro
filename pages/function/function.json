@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "功能页"
+  "navigationBarTitleText": "功能页",
+  "enablePullDownRefresh": true
 }

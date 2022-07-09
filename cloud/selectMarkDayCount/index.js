@@ -9,8 +9,8 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-    return await db.collection('speechItemList')
+    return await db.collection('markDay')
     .where({
-      state:1
+      state:'0'
     }).count()
 }

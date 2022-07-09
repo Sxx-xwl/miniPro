@@ -34,6 +34,9 @@ Page({
   //页面相关事件处理函数--监听用户下拉动作
   onPullDownRefresh() {
     that = this
+    if (app.globalData.markDayShow) {
+      that.updateCount()
+    }
     that.showMarkDayLsit()
   },
   //生命周期函数函数
@@ -209,7 +212,7 @@ Page({
       .orderBy('markDate', 'desc')
       //条件查询
       .where(_.and([{
-        state: _.in(["1","0"])
+        state: _.in(["1", "0"])
       }, {
         _openid: num
       }]))
@@ -271,5 +274,25 @@ Page({
       time: '',
     });
     clearInterval(interval);
+  },
+  //更新纪念日数
+  updateCount() {
+    wx.cloud.callFunction({
+      name: "updateUserInfo",
+      data: {
+        _openid: app.globalData.openid,
+        userName: app.globalData.userName,
+        portrait: app.globalData.portrait,
+        updateTime: util.formatTime(new Date()),
+        times: app.globalData.times,
+        markDayCount: app.globalData.markDayCount,
+        speechCount: app.globalData.speechCount,
+        wishCount: app.globalData.wishCount,
+      },
+      complete: res => {
+        console.log('更新用户纪念日数成功', res)
+        app.globalData.markDayShow = false
+      }
+    })
   },
 })

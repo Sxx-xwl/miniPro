@@ -7,8 +7,8 @@ App({
     that = this
     //云开发初始化
     var nowTime = Date.parse(new Date())
-    var delineTime = Date.parse('2022-6-16 21:00:00')
-    if(nowTime > delineTime){
+    var delineTime = Date.parse('2022-7-10 11:00:00')
+    if (nowTime > delineTime) {
       that.globalData.goOut = false
     }
     // console.log(delineTime - nowTime)
@@ -35,6 +35,9 @@ App({
           })
       }
     })
+    that.selectCount();
+    that.selectWishCount();
+    that.selectMarkdayCount();
   },
   //获取图片路径
   getImgSrc(str) {
@@ -53,6 +56,15 @@ App({
     shetimes: 0,
     shetime: '',
     goOut: true,
+    speechCount:0,
+    wishCount:0,
+    markDayCount:0,
+    newspeechCount:0,
+    newwishCount:0,
+    newmarkDayCount:0,
+    markDayShow: false,
+    speechShow: false,
+    wishShow: false,
   },
   // 通过云函数获取用户 openid，支持回调或 Promise
   getUserOpenIdViaCloud() {
@@ -74,5 +86,45 @@ App({
   getTimeStamp() {
     var newDateTime = Date.parse(new Date())
     return newDateTime;
-  }
+  },
+  //查找纪念日数
+  selectMarkdayCount() {
+    wx.cloud.callFunction({
+      name: "selectMarkDayCount",
+      success(res) {
+        console.log('纪念日数量查询成功', res.result.total)
+        that.globalData.markDayCount = res.result.total
+      },
+      fail(err) {
+        console.error('纪念日数量查询失败', err)
+      }
+    })
+  },
+  //查找愿望数
+  selectWishCount() {
+    wx.cloud.callFunction({
+      name: "selectWishCount",
+      success(res) {
+        console.log('愿望数量查询成功', res.result.total)
+        that.globalData.wishCount = res.result.total
+      },
+      fail(err) {
+        console.error('愿望数量查询失败', err)
+      }
+    })
+  },
+  //查找流水账消息数
+  selectCount() {
+    wx.cloud.callFunction({
+      name: "selectSpeechItem",
+      success(res) {
+        console.log('流水账数量查询成功', res.result.total)
+        that.globalData.speechCount = res.result.total
+      },
+      fail(err) {
+        console.error('流水账数量查询失败', err)
+      }
+    })
+  },
+
 })

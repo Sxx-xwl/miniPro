@@ -41,6 +41,9 @@ Page({
   onPullDownRefresh() {
     that = this
     console.log('刷新了一下！')
+    if(app.globalData.speechShow){
+      that.updateCount()
+    }
     that.showSpeechImgLsit()
   },
   //添加流水账界面
@@ -226,7 +229,7 @@ Page({
       },
       success(res) {
         console.log('流水账时间筛选请求成功', res.result.data)
-        if ( res.result.data.length == 0) {
+        if (res.result.data.length == 0) {
           wx.showToast({
             title: '这个月没有哦！',
             icon: 'error'
@@ -237,7 +240,7 @@ Page({
           })
         }
         that.setData({
-          speechImgList:  res.result.data,
+          speechImgList: res.result.data,
         })
         that.selectComponent('#item').toggle();
         //停止刷新动画
@@ -299,5 +302,25 @@ Page({
   //取消筛选
   closeTime() {
     this.selectComponent('#item').toggle();
+  },
+  //查找流水账消息数
+  updateCount() {
+    wx.cloud.callFunction({
+      name: "updateUserInfo",
+      data: {
+        _openid: app.globalData.openid,
+        userName: app.globalData.userName,
+        portrait: app.globalData.portrait,
+        updateTime: util.formatTime(new Date()),
+        times: app.globalData.times,
+        markDayCount: app.globalData.markDayCount,
+        speechCount: app.globalData.speechCount,
+        wishCount: app.globalData.wishCount,
+      },
+      complete: res => {
+        console.log('更新用户流水账数成功', res)
+        app.globalData.speechShow = false
+      }
+    })
   },
 })
