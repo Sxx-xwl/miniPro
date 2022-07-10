@@ -2,9 +2,17 @@
 <view class="body">
   <view class="info">
     <!-- <view>{{openid}}</view> -->
-    <view class="background" style="background-image: url({{portrait}});"></view>
+    <view class="background" style="background-image: url({{portrait}});" wx:if="{{portrait.length>0}}"></view>
+    <view class="background" style="background-image: url({{isNull}});" wx:else="{{portrait.length<=0}}"></view>
+
     <van-image class="image" fit="contain" round width="5rem" height="5rem" src="{{portrait}}" wx:if="{{portrait.length>0}}" />
     <view class="myInfo" wx:if="{{userName}}">{{userName}}</view>
+    
+    <view class="feedback" wx:if="{{portrait.length<=0}}">
+      <view class="bottom">
+        <view class="environment">version：2.5.2</view>
+      </view>
+    </view>
   </view>
 
   <!-- Field 输入框 -->
@@ -19,12 +27,11 @@
     </van-cell-group>
     <van-cell-group inset wx:if="{{openid=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}" class="myself">
       <van-cell title="来访次数：" value="{{times}}次！" />
-      <van-cell title="上次来访时间：" value="{{time}}" class="shetime"/>
+      <van-cell title="上次来访时间：" value="{{time}}" class="shetime" />
     </van-cell-group>
     <view class="bottom">
       <view class="environment">version：2.5.2</view>
     </view>
   </view>
 </view>
-
 <van-toast id="van-toast" />

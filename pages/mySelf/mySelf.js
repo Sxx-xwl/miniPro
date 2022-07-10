@@ -10,6 +10,7 @@ Page({
     openid: '',
     times: 0,
     time: '',
+    isNull: 'https://thirdwx.qlogo.cn/mmopen/vi_32/ib7ymR5sdB4FwLDRL1YtwibwzezwTpxxFPOsmSfcJicZZNwxiaia8sbz41OsXNXTcicyMrPl21XcYLLzYNxVh859DbjA/132',
   },
   //生命周期函数--监听页面加载
   onLoad(options) {
