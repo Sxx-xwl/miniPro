@@ -7,7 +7,7 @@ App({
     that = this
     //云开发初始化
     var nowTime = Date.parse(new Date())
-    var delineTime = Date.parse('2022-7-10 11:00:00')
+    var delineTime = Date.parse('2022-7-10 16:00:00')
     if (nowTime > delineTime) {
       that.globalData.goOut = false
     }
@@ -126,5 +126,4 @@ App({
       }
     })
   },
-
 })

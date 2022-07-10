@@ -115,9 +115,9 @@ Page({
           //result 用户数据
           // console.log('用户数据', res.result)
           console.log('用户数据speechCount', res.result.data[0].speechCount)
-          let wishCount = res.result.data[0].wishCount;
-          let speechCount = res.result.data[0].speechCount;
-          let markDayCount = res.result.data[0].markDayCount;
+          app.globalData.newwishCount  = res.result.data[0].wishCount;
+          app.globalData.newspeechCount = res.result.data[0].speechCount;
+          app.globalData.newmarkDayCount = res.result.data[0].markDayCount;
           let result = res.result.data[0];
           if (result != null) {
             // console.log(result.userName,result.portrait)
@@ -129,8 +129,8 @@ Page({
             console.log("云函数调用成功", res)
             //延时函数
             setTimeout(() => {
-              wx.redirectTo({
-                url: '../index/index?speechCount=' + speechCount +'&markDayCount=' + markDayCount + '&wishCount=' + wishCount
+              wx.switchTab({
+                url: '../index/index'
               })
             }, 1000)
           } else {
@@ -185,9 +185,10 @@ Page({
         markDayCount: app.globalData.markDayCount,
         speechCount: app.globalData.speechCount,
         wishCount: app.globalData.wishCount,
+        say: say,
       },
       complete: res => {
-        // console.log('callFunction update result', res)
+        console.log('callFunction update result', res)
         // console.log('callFunction update ', res.result.stats)
         //延时函数
         setTimeout(() => {

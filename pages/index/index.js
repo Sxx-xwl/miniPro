@@ -124,7 +124,10 @@ Page({
     console.log('停止了刷新')
   },
   //查询是否更新了
-  searchState(w, m, s) {
+  searchState() {
+    let w = app.globalData.newwishCount
+    let m = app.globalData.newmarkDayCount
+    let s = app.globalData.newspeechCount
     if (w != app.globalData.wishCount || m != app.globalData.markDayCount || s != app.globalData.speechCount) {
       if (w != app.globalData.wishCount) {
         app.globalData.wishShow = true
@@ -135,9 +138,6 @@ Page({
       if (s != app.globalData.speechCount) {
         app.globalData.speechShow = true
       }
-      app.globalData.newmarkDayCount = m
-      app.globalData.newwishCount = w
-      app.globalData.newspeechCount = s
       //消息提示
       wx.showTabBarRedDot({
         // index 是导航栏的索引 就是在第几个导航上显示
