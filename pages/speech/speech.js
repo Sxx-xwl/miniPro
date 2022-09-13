@@ -48,9 +48,8 @@ Page({
   },
   //添加流水账界面
   addSpeech(e) {
-    // console.log(e.currentTarget.dataset.id)
     that = this
-    if (app.globalData.openid != 'oZLHV4n8chsAEruzEztUEUaCXB_Q' && app.globalData.openid != 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s') {
+    if (app.globalData.openid != '《另一半的openid》' && app.globalData.openid != '《你自己的openid》') {
       wx.showToast({
         title: '这东西见不得人',
         icon: 'error'
@@ -66,9 +65,6 @@ Page({
     that = this
     wx.cloud.callFunction({
       name: "selectSpeech",
-      // data: {
-      //   _openid: app.globalData.openid
-      // },
       success(res) {
         console.log('流水账请求成功', res.result.data)
         that.setData({
@@ -92,7 +88,7 @@ Page({
   chooseImg(event) {
     that = this
     // console.log('event', event)
-    if (app.globalData.openid != 'oZLHV4n8chsAEruzEztUEUaCXB_Q' && app.globalData.openid != 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s') {
+    if (app.globalData.openid != '《另一半的openid》' && app.globalData.openid != '《你自己的openid》') {
       wx.showToast({
         title: '你别写！',
         icon: 'error'
@@ -314,7 +310,7 @@ Page({
         updateTime: util.formatTime(new Date()),
         times: app.globalData.times,
         markDayCount: app.globalData.markDayCount,
-        speechCount: app.globalData.speechCount,
+        speechCount: app.globalData.newspeechCount,
         wishCount: app.globalData.wishCount,
       },
       complete: res => {

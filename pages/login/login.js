@@ -1,84 +1,31 @@
 const app = getApp()
-const _ = wx.cloud.database().command
 let that = ''
 const util = require('../../utils/util');
 Page({
   data: {
     openid: '',
     backgroundImg: app.getImgSrc('index.jpg'),
-    list: '',
-    speechCount: '',
-    markDayCount: '',
-    wishCount: '',
   },
   //生命周期函数--监听页面加载
   onLoad(options) {
     that = this
-    let time = util.formatTime(new Date())
-    that.selectUserInfo()
-    that.updateMarkDay(time)
   },
   //获取微信用户信息
-  getUserProfile() {
+  getUserInfo() {
     that = this
-    that.setData({
-      openid: app.globalData.openid
-    })
     console.log('点击获取用户信息')
-    /*云函数的调用
-    wx.cloud.callFunction({
-      name: "selectUserInfo",
-      data: {
-        _openid: app.globalData.openid
-      },
-    success(res) {
-      // console.log('数据类型：',typeof app.globalData.openid)
-      wx.showToast({
-        title: '记住你了！！！',
-      })
-      //result 用户数据
-      console.log('用户数据', res.result.data.length)
-      console.log('用户数据', res.result.data[0])
-      let result = res.result.data[0];
-      let len = res.result.data.length;
-    if (len == 0) {*/
     wx.getUserProfile({
       desc: '用于完善个人信息',
-      success: (res) => {
+      success(res) {
         let user = res.userInfo
         console.log('获取到的用户信息:', user)
         app.globalData.userInfo = user
         console.log("全局用户信息", app.globalData.userInfo)
-        // that.addUserInfo(user.nickName, user.avatarUrl)
         app.globalData.userName = user.nickName
         app.globalData.portrait = user.avatarUrl
-        let times = 1;
-        // console.log("全局用户姓名", app.globalData.userName) 
-        that.addUserInfo(user.nickName, user.avatarUrl, times)
-        console.log("云函数调用成功", res)
-        wx.switchTab({
-          url: '../index/index'
-        });
+        that.selectUserInfo()
       },
     })
-    // } 
-    // else {
-    //   // console.log(result.userName,result.portrait)
-    //   app.globalData.userName = result.userName
-    //   app.globalData.portrait = result.portrait
-    //   //查到了 更新一下吧
-    //   app.globalData.times = result.times + 1;
-    //   that.updateUserInfo(app.globalData.userName, app.globalData.portrait, app.globalData.times)
-    //   console.log("云函数调用成功", res)
-    //   wx.switchTab({
-    //     url: '../index/index'
-    //   });
-    // }
-    // },
-    // fail(err) {
-    //   console.error("云函数调用失败", err);
-    // }
-    // })
   },
   //通过openid查找用户信息
   selectUserInfo() {
@@ -86,74 +33,34 @@ Page({
     that.setData({
       openid: app.globalData.openid
     })
-    //延时函数
-    setTimeout(() => {
-      wx.showLoading({
-        title: '让我找找你是谁',
-      })
-      if (app.globalData.openid == "oZLHV4n8chsAEruzEztUEUaCXB_Q") {
-        wx.cloud.database().collection('wxUser')
-          .where({
-            _openid: "oZLHV4lqw6nzzt_1Z7I1A8PgR8-s"
-          })
-          .get()
-          .then(res => {
-            // console.log("女朋友信息：",res.data[0].times)
-            app.globalData.shetimes = res.data[0].times;
-            // console.log("女朋友信息：",res.data[0].updateTime)
-            app.globalData.shetime = res.data[0].updateTime;
-          })
-      }
-      //云函数的调用
-      wx.cloud.callFunction({
-        name: "selectUserInfo",
-        data: {
-          _openid: app.globalData.openid
-        },
-        success(res) {
-          // console.log('数据类型：',typeof app.globalData.openid)
-          //result 用户数据
-          // console.log('用户数据', res.result)
-          console.log('用户数据speechCount', res.result.data[0].speechCount)
-          app.globalData.newwishCount  = res.result.data[0].wishCount;
-          app.globalData.newspeechCount = res.result.data[0].speechCount;
-          app.globalData.newmarkDayCount = res.result.data[0].markDayCount;
-          let result = res.result.data[0];
-          if (result != null) {
-            // console.log(result.userName,result.portrait)
-            app.globalData.userName = result.userName
-            app.globalData.portrait = result.portrait
-            //查到了 更新一下吧
-            app.globalData.times = result.times + 1;
-            that.updateUserInfo(app.globalData.userName, app.globalData.portrait, app.globalData.times, result.say)
-            console.log("云函数调用成功", res)
-            //延时函数
-            setTimeout(() => {
-              wx.switchTab({
-                url: '../index/index'
-              })
-            }, 1000)
-          } else {
-            // console.log(false)
-            //没查到 添加一个吧
-            // that.getUserProfile(app.globalData.userName, app.globalData.portrait, 1)
-            // this.getUserProfile();
-            wx.showToast({
-              title: '不认识！',
-              icon: 'error'
-            })
-            // wx.hideLoading()
-          }
-        },
-        fail(err) {
-          console.error("云函数调用失败", err);
+    //云函数的调用
+    wx.cloud.callFunction({
+      name: "selectUserInfo",
+      data: {
+        _openid: app.globalData.openid
+      },
+      success(res) {
+        console.log('用户数据', res)
+        let result = res.result.data[0];
+        if (result != null) {
+          //查到了 更新一下吧
+          that.updateUserInfo(app.globalData.userName, app.globalData.portrait)
+        } else {
+          //没查到 添加一个吧
+          that.addUserInfo(app.globalData.userName, app.globalData.portrait)
         }
-      })
-    }, 1000)
+        console.log("云函数调用成功", res)
+        wx.switchTab({
+          url: '../index/index'
+        });
+      },
+      fail(err) {
+        console.error("云函数调用失败", err);
+      }
+    })
   },
   //存储微信用户信息
-  addUserInfo(userName, portrait, times) {
-    //console.log('1')
+  addUserInfo(userName, portrait) {
     console.log(userName, ' ', portrait)
     wx.cloud.callFunction({
       name: "addUserInfo",
@@ -162,16 +69,16 @@ Page({
         userName: userName,
         portrait: portrait,
         updateTime: util.formatTime(new Date()),
-        submitTime: util.formatTime(new Date()),
-        times: times
+        submitTime: util.formatTime(new Date())
       },
       complete: res => {
         console.log('callFunction Add result', res)
       }
     })
+
   },
   //更新微信用户信息
-  updateUserInfo(userName, portrait, times, say) {
+  updateUserInfo(userName, portrait) {
     that = this
     console.log(userName, ' ', portrait)
     wx.cloud.callFunction({
@@ -181,65 +88,26 @@ Page({
         userName: userName,
         portrait: portrait,
         updateTime: util.formatTime(new Date()),
-        times: times,
-        markDayCount: app.globalData.markDayCount,
-        speechCount: app.globalData.speechCount,
-        wishCount: app.globalData.wishCount,
-        say: say,
       },
       complete: res => {
         console.log('callFunction update result', res)
-        // console.log('callFunction update ', res.result.stats)
-        //延时函数
-        setTimeout(() => {
-          if (app.globalData.openid == 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s') {
-            wx.showToast({
-              title: say,
-              icon: 'none'
-            })
-          } else if (app.globalData.openid == 'oZLHV4n8chsAEruzEztUEUaCXB_Q') {
-            // 我
-            wx.showToast({
-              title: say,
-              icon: 'none'
-            })
-          } else if (app.globalData.openid == 'oZLHV4vgHB0kIHRdwybT0lECiBQ0') {
-            wx.showToast({
-              title: say,
-              icon: 'none'
-            })
-          } else if (app.globalData.openid == 'oZLHV4pcqqtvYOaGr5STfQzTNVSk') {
-            wx.showToast({
-              title: say,
-              icon: 'none'
-            })
-          } else if (app.globalData.openid == 'oZLHV4h8IaAVj_NYMvDL0LvtG54k') {
-            wx.showToast({
-              title: say,
-              icon: 'none'
-            })
-          } else {
-            wx.showToast({
-              title: '欢迎提供bug',
-              icon: 'none'
-            })
-          }
-        }, 1000)
-      }
-    })
-  },
-  //更新纪念日列表标签
-  updateMarkDay(time) {
-    wx.cloud.callFunction({
-      name: "updateMarkDay",
-      data: {
-        time: time
-      },
-      success: res => {
-        console.log('纪念日修改成功', res)
-      },
-      fail: err => {
-        console.error('纪念日修改失败', err)
+        console.log('callFunction update ', res.result.stats)
+        if (app.globalData.openid == '《你自己的openid》') {
+          wx.showToast({
+            title: '来啦来啦？大哥爱你！',
+            icon: 'none'
+          })
+        } else if (app.globalData.openid == '《另一半的openid》') {
+          wx.showToast({
+            title: '又有bug了？？',
+            icon: 'none'
+          })
+        } else {
+          wx.showToast({
+            title: '欢迎提供bug',
+            icon: 'none'
+          })
+        }
       }
     })
   },

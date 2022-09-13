@@ -8,21 +8,21 @@
       <block class="commentsBlock" wx:for="{{speechItemList}}" wx:key="index">
 
         <view class="commentsInfo" wx:if="{{item.num%2 == 0}}">
-          <view class="commentPart1" wx:if="{{item.openid=='oZLHV4lqw6nzzt_1Z7I1A8PgR8-s'}}">
+          <view class="commentPart1" wx:if="{{item.openid=='《你自己的openid》'}}">
             <van-image fit="contain" width="7rem" height="7rem" src="{{item.cloudPath}}" data-src="{{item.cloudPath}}" bindtap="previewImage" />
             <view class="commentName" data-id="{{item._id}}" bindlongtap="updateItem" style="color: rgb(0, 0, 0);">{{item.text}}</view>
           </view>
-          <view class="commentPart2" wx:if="{{item.openid=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}">
+          <view class="commentPart2" wx:if="{{item.openid=='《另一半的openid》'}}">
             <van-image fit="contain" width="7rem" height="7rem" src="{{item.cloudPath}}" data-src="{{item.cloudPath}}" bindtap="previewImage" />
             <view class="commentName1" data-id="{{item._id}}" bindlongtap="updateItem" style="color: rgb(48, 95, 250);">{{item.text}}</view>
           </view>
         </view>
         <view class="commentsInfo" wx:if="{{item.num%2 == 1}}">
-          <view class="commentPart1" wx:if="{{item.openid=='oZLHV4lqw6nzzt_1Z7I1A8PgR8-s'}}">
+          <view class="commentPart1" wx:if="{{item.openid=='《你自己的openid》'}}">
             <view class="commentName" data-id="{{item._id}}" bindlongtap="updateItem" style="color: rgb(0, 0, 0);">{{item.text}}</view>
             <van-image fit="contain" width="7rem" height="7rem" src="{{item.cloudPath}}" data-src="{{item.cloudPath}}" bindtap="previewImage" />
           </view>
-          <view class="commentPart2" wx:if="{{item.openid=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}">
+          <view class="commentPart2" wx:if="{{item.openid=='《另一半的openid》'}}">
             <view class="commentName1" data-id="{{item._id}}" bindlongtap="updateItem" style="color: rgb(48, 95, 250);">{{item.text}}</view>
             <van-image fit="contain" width="7rem" height="7rem" src="{{item.cloudPath}}" data-src="{{item.cloudPath}}" bindtap="previewImage" />
           </view>
@@ -33,7 +33,7 @@
     </view>
   </scroll-view>
 </view>
-<view wx:if="{{openid=='oZLHV4lqw6nzzt_1Z7I1A8PgR8-s' || openid=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}">
+<view wx:if="{{openid=='《你自己的openid》' || openid=='《另一半的openid》'}}">
   <view class="show" wx:if="{{!display}}">
     <van-button color="#81e9e6" class="button" bindtap="show">又想写了</van-button>
   </view>

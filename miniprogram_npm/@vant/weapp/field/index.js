@@ -64,6 +64,10 @@ var props_1 = require("./props");
         },
         onClickIcon: function () {
             this.$emit('click-icon');
+            wx.showToast({
+              title: '不知道说啥？给老子想！😡',
+              icon:'none'
+            })
         },
         onClickInput: function (event) {
             this.$emit('click-input', event.detail);

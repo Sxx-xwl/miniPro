@@ -9,13 +9,6 @@ page{
   height: 100vh;
 }
 
-.into {
-  height: 7vh;
-  width: 10vw;
-  position: absolute;
-  color: rgb(0, 0, 0);
-}
-
 .add {
   height: 7vh;
   width: 10vw;

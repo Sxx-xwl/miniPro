@@ -11,14 +11,4 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 2vh;
-}
-
-.image{
-  position: relative;
-  display: flex;
-}
-
-.iamge .span {
-  position: absolute;
 }

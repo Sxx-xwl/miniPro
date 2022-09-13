@@ -36,5 +36,12 @@ var component_1 = require("../common/component");
             this.$emit('click', event.detail);
             this.jumpLink();
         },
+        onClickicon(){
+          wx.showToast({
+            title: '这里你也点？？？',
+            icon:'none',
+            mask: true,
+          })
+        }
     },
 });

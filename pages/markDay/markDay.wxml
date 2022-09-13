@@ -18,7 +18,7 @@
 <!-- 日子列表 -->
 <view wx:for="{{list}}" wx:key="index">
   <!-- 我添加的日子 -->
-  <van-swipe-cell right-width="{{ 65 }}" async-close bind:close="onClose" name='{{item._id}}' wx:if="{{item._openid=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}" class="myMarkDay">
+  <van-swipe-cell right-width="{{ 65 }}" async-close bind:close="onClose" name='{{item._id}}' wx:if="{{item._openid=='《另一半的openid》'}}" class="myMarkDay">
     <van-cell value="{{item.markDate}}" icon="underway-o" is-link='show' class="myMarkDay" bindtap="showDetail" data-name="{{item.markText}}" data-id="{{item.markDate}}">
       <view slot="title">
         <view class="van-cell-text">{{item.markText}}</view>
@@ -29,8 +29,8 @@
     <view slot="right">删除</view>
   </van-swipe-cell>
   <!-- 她添加的日子 -->
-  <van-swipe-cell right-width="{{ 65 }}" async-close bind:close="onClose" name='{{item._id}}' wx:if="{{item._openid=='oZLHV4lqw6nzzt_1Z7I1A8PgR8-s'}}" class="sheMarkDay">
-    <van-cell value="{{item.markDate}}" icon="underway-o" is-link='show' class="sheMarkDay" bindtap="showDetail" data-name="{{item.markText}}" data-id="{{item.markDate}}">
+  <van-swipe-cell right-width="{{ 65 }}" async-close bind:close="onClose" name='{{item._id}}' wx:if="{{item._openid=='《你自己的openid》'}}" class="sheMarkDay">
+    <van-cell value="{{item.markDate}}" icon="underway-o" is-link='show' class="sheMarkDay" bindtap="showDetail" data-id="{{item.markDate}}">
       <view slot="title">
         <view class="van-cell-text">{{item.markText}}</view>
         <van-tag type="danger" wx:if="{{item.state == 1}}">还未到</van-tag>
@@ -45,13 +45,13 @@
 <van-overlay show="{{ show }}" bind:click="onClickHide">
   <view class="wrapper">
 
-    <view class="block1" wx:if="{{isSequence}}">
+    <view class="block" wx:if="{{isSequence}}">
       <view class="title">距离</view>
       <view class="time">{{name}}</view>
       <view class="title">已经过了</view>
       <view class="time">{{time}}</view>
     </view>
-    <view class="block2" wx:if="{{!isSequence}}">
+    <view class="block" wx:if="{{!isSequence}}">
       <view class="title">距离</view>
       <view class="time">{{name}}</view>
       <view class="title">还剩下</view>

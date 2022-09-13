@@ -8,6 +8,7 @@ const _ = wx.cloud.database().command
 let interval = null;
 
 Page({
+
   //页面的初始数据
   data: {
     list: [],
@@ -19,8 +20,7 @@ Page({
     name: '',
     show: false,
     timer: '',
-    isSequence: '',
-    overdue: '',
+    isSequence: ''
   },
   //生命周期函数--监听页面加载
   onLoad(options) {
@@ -34,31 +34,26 @@ Page({
   //页面相关事件处理函数--监听用户下拉动作
   onPullDownRefresh() {
     that = this
-    if (app.globalData.markDayShow) {
-      that.updateCount()
-    }
     that.showMarkDayLsit()
   },
   //生命周期函数函数
   onShow() {
-    // console.log('刷新？')
     //刷新页面
     wx.startPullDownRefresh()
   },
   //筛选功能
   onChange(event) {
     that = this
-    // console.log('页面',event.detail.name)
     let num = event.detail.name
     if (num == 0) {
       that.showMarkDayLsit()
     } else if (num == 1) {
       console.log('页面', num)
-      let e = 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s'
+      let e = '《你自己的openid》'
       that.showPartMarkDayList1(e)
     } else if (num == 2) {
       console.log('页面', num)
-      let e = 'oZLHV4n8chsAEruzEztUEUaCXB_Q'
+      let e = '《另一半的openid》'
       that.showPartMarkDayList1(e)
     } else if (num == 3) {
       console.log('页面', num)
@@ -74,7 +69,7 @@ Page({
   onClose(event) {
     that = this
     console.log('event,', event.detail.name)
-    if (that.data.openid != 'oZLHV4n8chsAEruzEztUEUaCXB_Q' && that.data.openid != 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s') {
+    if (that.data.openid != '《另一半的openid》' && that.data.openid != '《你自己的openid》') {
       Dialog.confirm({
           context: this,
           title: '??????',
@@ -126,7 +121,7 @@ Page({
   //添加新纪念日
   addMarkDay(e) {
     that = this
-    if (app.globalData.openid != 'oZLHV4n8chsAEruzEztUEUaCXB_Q' && app.globalData.openid != 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s') {
+    if (app.globalData.openid != '《另一半的openid》' && app.globalData.openid != '《你自己的openid》') {
       wx.showToast({
         title: '自己用脑袋记！',
         icon: 'error'
@@ -144,20 +139,12 @@ Page({
       openid: app.globalData.openid,
     })
     console.log('openid', that.data.openid)
-    wx.cloud.database().collection('markDay')
-      //倒序
-      .orderBy('markDate', 'desc')
-      //条件查询
-      .where(_.or([{
-        state: "0"
-      }, {
-        state: "1"
-      }]))
-      .get()
-      .then(res => {
+    wx.cloud.callFunction({
+      name: "selectMarkDay",
+      success: res => {
         console.log('纪念日请求成功', res)
         that.setData({
-          list: res.data
+          list: res.result.data
         })
         //停止刷新动画
         wx.stopPullDownRefresh()
@@ -167,10 +154,11 @@ Page({
           .catch(err => {
             console.log('刷新停止失败')
           })
-      })
-      .catch(err => {
+      },
+      fail: err => {
         console.error('纪念日请求失败', err)
-      })
+      }
+    })
   },
   //计时函数1  1000ms(1s)刷新一次 
   getnextTime() {
@@ -211,11 +199,14 @@ Page({
       //倒序
       .orderBy('markDate', 'desc')
       //条件查询
-      .where(_.and([{
-        state: _.in(["1", "0"])
-      }, {
-        _openid: num
-      }]))
+      .where({
+          _openid: num
+        },
+        (_.or([{
+          state: "0"
+        }, {
+          state: "1"
+        }])))
       .get()
       .then(res => {
         console.log('条件查询成功', res.data)
@@ -265,7 +256,6 @@ Page({
         Toast.clear();
       }, 1000);
     }
-    // console.log('time', that.data.time)
   },
   //隐藏细节
   onClickHide() {
@@ -274,25 +264,5 @@ Page({
       time: '',
     });
     clearInterval(interval);
-  },
-  //更新纪念日数
-  updateCount() {
-    wx.cloud.callFunction({
-      name: "updateUserInfo",
-      data: {
-        _openid: app.globalData.openid,
-        userName: app.globalData.userName,
-        portrait: app.globalData.portrait,
-        updateTime: util.formatTime(new Date()),
-        times: app.globalData.times,
-        markDayCount: app.globalData.markDayCount,
-        speechCount: app.globalData.speechCount,
-        wishCount: app.globalData.wishCount,
-      },
-      complete: res => {
-        console.log('更新用户纪念日数成功', res)
-        app.globalData.markDayShow = false
-      }
-    })
   },
 })

@@ -6,7 +6,6 @@
 <view class="topImage">
   <!-- Image 上方圆形图片 -->
   <van-image round width="6rem" height="6rem" src="{{topImage}}" bind:click="topImageClick" />
-  <!-- <view class="title">让我告诉你什么叫半途而</view> -->
 </view>
 <!-- 显示计时器 -->
 <view data-hidden="true" bindtap="showTime">
@@ -25,12 +24,3 @@
     <van-image width="100vw" height="40vh" fit="contain" src="{{item.image}}" bindtap="imageListClick" />
   </swiper-item>
 </swiper>
-
-
-<!-- Tabbar 底部导航栏
-<van-tabbar active="{{ active }}" inactive-color="black" active-color="pink">
-  <van-tabbar-item data-name="home" name="home" icon="wap-home" bindtap="tabberChange">主页</van-tabbar-item>
-  <van-tabbar-item data-name="search" name="search" icon="cluster" bindtap="tabberChange">功能</van-tabbar-item>
-  <van-tabbar-item data-name="friends" name="friends" icon="chat" bindtap="tabberChange">BiBi</van-tabbar-item>
-  <van-tabbar-item data-name="setting" name="setting" icon="manager" bindtap="tabberChange">我的</van-tabbar-item>
-</van-tabbar> -->

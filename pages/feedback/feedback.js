@@ -40,8 +40,6 @@ Page({
   //留言内容获取
   onChange(event) {
     that = this
-    // event.detail 为当前输入的值
-    // console.log(event.detail
     let comments = event.detail
     that.setData({
       comments: comments
@@ -64,7 +62,6 @@ Page({
       portrait: app.globalData.userInfo.avatarUrl,
       openid: app.globalData.openid
     })
-    // console.log(app.globalData.userInfo.nickName,app.globalData.userInfo.avatarUrl)
     //将内容添加到数据库
     wx.cloud.callFunction({
       name: "addUserCom",

@@ -1,16 +1,12 @@
 const app = getApp()
 let that = ''
 const util = require('../../utils/util.js');
-import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+
 Page({
   data: {
     feedback: '',
     userName: '',
     portrait: '',
-    openid: '',
-    times: 0,
-    time: '',
-    isNull: 'https://thirdwx.qlogo.cn/mmopen/vi_32/ib7ymR5sdB4FwLDRL1YtwibwzezwTpxxFPOsmSfcJicZZNwxiaia8sbz41OsXNXTcicyMrPl21XcYLLzYNxVh859DbjA/132',
   },
   //生命周期函数--监听页面加载
   onLoad(options) {
@@ -18,9 +14,6 @@ Page({
     that.setData({
       userName: app.globalData.userName,
       portrait: app.globalData.portrait,
-      openid: app.globalData.openid,
-      times: app.globalData.shetimes,
-      time: app.globalData.shetime,
     })
   },
   //反馈内容获取
@@ -45,10 +38,6 @@ Page({
       })
       return
     }
-    Toast.loading({
-      message: '我把这话告诉他',
-      forbidClick: true,
-    });
     console.log(feedbackValue)
     //将内容添加到数据库
     wx.cloud.callFunction({
@@ -66,7 +55,6 @@ Page({
         that.setData({
           feedback: ''
         })
-        Toast.clear();
         wx.showToast({
           title: '好的，大哥收到！',
         })
@@ -75,5 +63,5 @@ Page({
         console.log('FB Add result', res)
       }
     })
-  },
+  }
 })

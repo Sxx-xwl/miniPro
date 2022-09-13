@@ -4,31 +4,21 @@ let that = ''
 const util = require('../../utils/util');
 
 Page({
-
   //页面的初始数据
   data: {
     list: [],
     markText: '',
     markDate: '',
     state: '',
-    openid: '',
   },
   //生命周期函数--监听页面加载
   onLoad(options) {
-    that = this
-    that.setData({
-      openid: app.globalData.openid
-    })
-    //刷新页面
-    // wx.startPullDownRefresh()
   },
   //页面相关事件处理函数--监听用户下拉动作
   onPullDownRefresh() {
-
   },
   //页面上拉触底事件的处理函数
   onReachBottom() {
-
   },
   //添加新纪念日
   createDay(e) {
@@ -100,8 +90,6 @@ Page({
   //获取纪念日名称
   onChange(event) {
     that = this
-    // event.detail 为当前输入的值
-    console.log(event.detail);
     that.setData({
       markText: event.detail
     })

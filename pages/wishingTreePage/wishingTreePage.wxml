@@ -15,25 +15,25 @@
 <view wx:if="{{choose==1}}" class="windows2">
   <view wx:for="{{wishList1}}" wx:key="index">
     <!-- 我的愿望 -->
-    <view class="view_tupian_wenzi" wx:if="{{item.id=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}" style="background-color:rgb(57, 209, 65);">
+    <view class="view_tupian_wenzi" wx:if="{{item.id=='《另一半的openid》'}}" style="background-color:rgb(131, 225, 248);">
       <van-image width="3rem" height="3rem" fit="contain" src="{{complete}}" />
       <view class="view_wenzi2" data-id="{{index}}">
         <view class="completeItem">
           <text>{{item.userName}}的心愿:{{item.nameValue}}</text>
           <van-image width="4rem" height="4rem" fit="contain" src="{{item.cloudPath}}" />
         </view>
-        <text class="completeItemTime">实现时间：{{item.updateTime}}</text>
+        <text class="completeItemTime">实现时间：{{item.submitTime}}</text>
       </view>
     </view>
     <!-- 她的愿望 -->
-    <view class="view_tupian_wenzi" wx:if="{{item.id=='oZLHV4lqw6nzzt_1Z7I1A8PgR8-s'}}" style="background-color:rgb(87, 217, 250);">
+    <view class="view_tupian_wenzi" wx:if="{{item.id=='《你自己的openid》'}}" style="background-color:rgb(238, 49, 228);">
       <van-image width="3rem" height="3rem" fit="contain" src="{{complete}}" />
       <view class="view_wenzi2" data-id="{{index}}">
         <view class="completeItem">
           <text>{{item.userName}}的心愿:{{item.nameValue}}</text>
           <van-image width="4rem" height="4rem" fit="contain" src="{{item.cloudPath}}" />
         </view>
-        <text class="completeItemTime">实现时间：{{item.updateTime}}</text>
+        <text class="completeItemTime">实现时间：{{item.submitTime}}</text>
       </view>
     </view>
   </view>

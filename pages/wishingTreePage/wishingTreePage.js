@@ -57,9 +57,6 @@ Page({
   //生命周期函数--监听页面加载
   onLoad: function (options) {
     that = this
-    if (app.globalData.wishShow) {
-      that.updateCount()
-    }
     //刷新页面
     // wx.startPullDownRefresh()
     that.showWisgLsit()
@@ -78,7 +75,7 @@ Page({
     })
     let nameValue = that.data.nameValue
     let priceValue = that.data.priceValue
-    let tempFilePaths = that.data.tempFilePaths[0]
+    let tempFilePaths = that.data.tempFilePaths
 
     if (!nameValue.replace(/\s+/g, '').length != 0) {
       wx.showToast({
@@ -90,8 +87,7 @@ Page({
         title: '放心写价格！',
         icon: 'error'
       })
-      // } else if (!tempFilePaths.replace(/\s+/g, '').length != 0) {
-    } else if (!tempFilePaths) {
+    } else if (!tempFilePaths.replace(/\s+/g, '').length != 0) {
       wx.showToast({
         title: '传个图片！',
         icon: 'error'
@@ -99,7 +95,7 @@ Page({
     } else {
       // console.log('nameValue', nameValue)
       // console.log('priceValue', priceValue)
-      that.uploadFile(tempFilePaths, nameValue + '.png')
+      that.uploadFile(tempFilePaths[0], nameValue + '.png')
       console.log('愿望上传了')
     }
   },
@@ -127,7 +123,7 @@ Page({
   //展示弹出层
   showPopup() {
     that = this
-    if (app.globalData.openid != 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s' && app.globalData.openid != 'oZLHV4n8chsAEruzEztUEUaCXB_Q') {
+    if (app.globalData.openid != '《你自己的openid》' && app.globalData.openid != '《另一半的openid》') {
       wx.showToast({
         title: '你没权限添加哦',
         icon: 'error',
@@ -185,7 +181,7 @@ Page({
     let wishIcon = that.data.wishIcon
     console.log(filePath)
     wx.cloud.uploadFile({
-      cloudPath: 'wishImg/' + fileName, //文件存储后的名字
+      cloudPath: fileName, //文件存储后的名字
       filePath: filePath, // 文件路径
     }).then(res => {
       // get resource ID
@@ -269,7 +265,7 @@ Page({
   //显示实现愿望窗口
   onClickShow(e) {
     that = this
-    if (app.globalData.openid != 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s' && app.globalData.openid != 'oZLHV4n8chsAEruzEztUEUaCXB_Q') {
+    if (app.globalData.openid != '《你自己的openid》' && app.globalData.openid != '《另一半的openid》') {
       wx.showToast({
         title: '你没权限查看哦',
         icon: 'error',
@@ -309,8 +305,8 @@ Page({
   showDelete(e) {
     // console.log('b1')
     that = this
-    console.log('我的权限：', app.globalData.openid)
-    if (app.globalData.openid != 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s' && app.globalData.openid != 'oZLHV4n8chsAEruzEztUEUaCXB_Q') {
+    console.log('我的权限：',app.globalData.openid)
+    if (app.globalData.openid != '《你自己的openid》' && app.globalData.openid != '《另一半的openid》') {
       wx.showToast({
         title: '你没权限删除哦',
         icon: 'error',
@@ -354,7 +350,7 @@ Page({
           data: {
             selectId: that.data.selectId,
             state: 0,
-            updateTime: util.formatTime(new Date())
+            submitTime: util.formatTime(new Date())
           },
           success: res => {
             console.log('愿望实现成功', res.result)
@@ -394,7 +390,7 @@ Page({
           data: {
             selectId: that.data.selectId,
             state: 2,
-            updateTime: util.formatTime(new Date())
+            submitTime: util.formatTime(new Date())
           },
           success: res => {
             console.log('愿望删除成功', res.result)
@@ -429,7 +425,7 @@ Page({
   //底部已实现按钮
   completeWish() {
     that = this
-    if (app.globalData.openid != 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s' && app.globalData.openid != 'oZLHV4n8chsAEruzEztUEUaCXB_Q') {
+    if (app.globalData.openid != '《你自己的openid》' && app.globalData.openid != '《另一半的openid》') {
       wx.showToast({
         title: '这可不能看哦',
         icon: 'error',
@@ -440,25 +436,5 @@ Page({
         choose: 1
       })
     }
-  },
-  //更新愿望数
-  updateCount() {
-    wx.cloud.callFunction({
-      name: "updateUserInfo",
-      data: {
-        _openid: app.globalData.openid,
-        userName: app.globalData.userName,
-        portrait: app.globalData.portrait,
-        updateTime: util.formatTime(new Date()),
-        times: app.globalData.times,
-        markDayCount: app.globalData.markDayCount,
-        speechCount: app.globalData.speechCount,
-        wishCount: app.globalData.wishCount,
-      },
-      complete: res => {
-        console.log('更新用户纪念日数成功', res)
-        app.globalData.wishShow = false
-      }
-    })
   },
 })

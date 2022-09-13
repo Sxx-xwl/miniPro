@@ -94,7 +94,6 @@ Page({
         that.setData({
           imageList: res.data
         })
-        // console.log("里面的数据",that.data.imageList[0].image)
       })
       .catch(err => {
         console.error('获取数据失败')

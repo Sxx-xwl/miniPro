@@ -12,7 +12,7 @@
         {
           "name": "功能页面",
           "pathName": "pages/function/function",
-          "query": "app.globalData.openid =oZLHV4n8chsAEruzEztUEUaCXB_Q",
+          "query": "",
           "launchMode": "default",
           "scene": null
         },
@@ -40,34 +40,6 @@
         {
           "name": "添加纪念日",
           "pathName": "pages/addmarkDay/addmarkDay",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "最初版本",
-          "pathName": "pages/prime/prime",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "流水账界面",
-          "pathName": "pages/speech/speech",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "添加流水账界面",
-          "pathName": "pages/addSpeech/addSpeech",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "修改流水账",
-          "pathName": "pages/updateSpeech/updateSpeech",
           "query": "",
           "launchMode": "default",
           "scene": null

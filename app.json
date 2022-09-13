@@ -10,12 +10,6 @@
     "pages/wishingTreePage/wishingTreePage",
     "pages/userList/userList",
     "pages/feedback/feedback",
-    "pages/speech/speech",
-    "pages/addSpeech/addSpeech",
-    "pages/updateSpeech/updateSpeech",
-    "pages/prime/prime",
-    "pages/prime/bb/index",
-    "pages/prime/seesee/index",
     "components/DatetimePicker/index"
   ],
   "window": {
@@ -29,7 +23,8 @@
     "color": "#8a8a8a",
     "selectedColor": "#2c2c2c",
     "backgroundColor": "#ffffff",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "text": "主页",
         "selectedIconPath": "assets/首页.png",
@@ -81,9 +76,7 @@
     "van-overlay": "@vant/weapp/overlay/index",
     "van-notify": "@vant/weapp/notify/index",
     "van-tab": "@vant/weapp/tab/index",
-    "van-tabs": "@vant/weapp/tabs/index",
-    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
-    "van-action-sheet": "@vant/weapp/action-sheet/index"
+    "van-tabs": "@vant/weapp/tabs/index"
   },
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"

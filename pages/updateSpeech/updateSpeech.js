@@ -46,7 +46,6 @@ Page({
           text: res.data[0].text,
           cloudPath: res.data[0].cloudPath,
         })
-        // console.log(that.data.cloudPath)
         //停止刷新动画
         wx.stopPullDownRefresh()
           .then(res => {
@@ -63,8 +62,6 @@ Page({
   //获取记录内容
   getText(event) {
     that = this
-    // event.detail 为当前输入的值
-    // console.log(event.detail);
     that.setData({
       text: event.detail
     })

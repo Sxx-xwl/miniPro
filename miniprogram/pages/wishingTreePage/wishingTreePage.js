@@ -93,8 +93,6 @@ Page({
         icon: 'error'
       })
     } else {
-      // console.log('nameValue', nameValue)
-      // console.log('priceValue', priceValue)
       that.uploadFile(tempFilePaths[0], nameValue + '.png')
       console.log('愿望上传了')
     }
@@ -102,9 +100,7 @@ Page({
   //获取名称输入框的值
   onChange1(event) {
     that = this
-
     // event.detail 为当前输入的值
-    // console.log(event.detail);
     let nameValue = event.detail
     that.setData({
       nameValue: nameValue
@@ -113,7 +109,6 @@ Page({
   //获取价格输入框的值
   onChange2(event) {
     that = this
-
     // event.detail 为当前输入的值
     let priceValue = event.detail
     that.setData({
@@ -123,7 +118,7 @@ Page({
   //展示弹出层
   showPopup() {
     that = this
-    if (app.globalData.openid != 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s' && app.globalData.openid != 'oZLHV4n8chsAEruzEztUEUaCXB_Q') {
+    if (app.globalData.openid != '《你自己的openid》' && app.globalData.openid != '《另一半的openid》') {
       wx.showToast({
         title: '你没权限添加哦',
         icon: 'error',
@@ -265,7 +260,7 @@ Page({
   //显示实现愿望窗口
   onClickShow(e) {
     that = this
-    if (app.globalData.openid != 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s' && app.globalData.openid != 'oZLHV4n8chsAEruzEztUEUaCXB_Q') {
+    if (app.globalData.openid != '《你自己的openid》' && app.globalData.openid != '《另一半的openid》') {
       wx.showToast({
         title: '你没权限查看哦',
         icon: 'error',
@@ -305,7 +300,7 @@ Page({
     // console.log('b1')
     that = this
     console.log('我的权限：',app.globalData.openid)
-    if (app.globalData.openid != 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s' && app.globalData.openid != 'oZLHV4n8chsAEruzEztUEUaCXB_Q') {
+    if (app.globalData.openid != '《你自己的openid》' && app.globalData.openid != '《另一半的openid》') {
       wx.showToast({
         title: '你没权限删除哦',
         icon: 'error',
@@ -424,7 +419,7 @@ Page({
   //底部已实现按钮
   completeWish() {
     that = this
-    if (app.globalData.openid != 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s' && app.globalData.openid != 'oZLHV4n8chsAEruzEztUEUaCXB_Q') {
+    if (app.globalData.openid != '《你自己的openid》' && app.globalData.openid != '《另一半的openid》') {
       wx.showToast({
         title: '这可不能看哦',
         icon: 'error',

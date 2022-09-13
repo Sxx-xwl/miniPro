@@ -5,40 +5,23 @@
 
 <view class="function">
   <view class="functionItem">
-    <view class="image">
     <van-image width="8rem" height="8rem" fit="contain" src="{{dayImg}}" />
-    <van-tag class="span" plain type="danger" wx:if="{{markDayShow}}">{{hasNew}}</van-tag>
-  </view>
     <van-button plain round type="primary" size="small" bindtap="markDay">好日子</van-button>
   </view>
   <view class="functionItem">
-    <view class="image">
     <van-image width="8rem" height="8rem" fit="contain" src="{{wishImg}}" />
-    <van-tag class="span" plain type="danger" wx:if="{{wishShow}}">{{hasNew}}</van-tag>
-  </view>
     <van-button plain round type="info" size="small" bindtap="wishingTree">许愿树</van-button>
   </view>
-  <view class="functionItem">
-    <view class="image">
-      <van-image width="8rem" height="8rem" fit="contain" src="{{speechImg}}" />
-      <van-tag class="span" plain type="danger" wx:if="{{speechShow}}">{{hasNew}}</van-tag>
-    </view>
-    <van-button plain round type="warning" size="small" bindtap="speech">演讲稿</van-button>
-  </view>
-  <view class="functionItem" wx:if="{{openid=='oZLHV4lqw6nzzt_1Z7I1A8PgR8-s' || openid=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}">
-    <van-image width="8rem" height="8rem" fit="contain" src="{{primeImg}}" />
-    <van-button plain round color="#7232dd" size="small" bindtap="prime">最初版</van-button>
-  </view>
-  <view class="functionItem" wx:if="{{openid=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}">
+  <view class="functionItem" wx:if="{{openid=='《另一半的openid》'}}">
     <van-image width="8rem" height="8rem" fit="contain" src="{{userListImg}}" />
     <van-button plain round type="info" size="small" bindtap="userList">用户列表</van-button>
   </view>
-  <view class="functionItem" wx:if="{{openid=='oZLHV4n8chsAEruzEztUEUaCXB_Q'}}">
+  <view class="functionItem" wx:if="{{openid=='《另一半的openid》'}}">
     <van-image width="8rem" height="8rem" fit="contain" src="{{feedbackImg}}" />
     <van-button plain round type="primary" size="small" bindtap="feedback">反馈留言</van-button>
   </view>
   <view class="functionItem">
     <van-image width="8rem" height="8rem" fit="contain" src="{{endImg}}" />
-    <van-button plain round type="danger" size="small" bindtap="end">敬请期待</van-button>
+    <van-button plain round type="info" size="small" bindtap="end">敬请期待</van-button>
   </view>
 </view>

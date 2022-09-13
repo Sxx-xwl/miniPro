@@ -37,7 +37,7 @@ Page({
   onClose(event) {
     that = this
     console.log('event,', event.detail.name)
-    if (that.data.openid != 'oZLHV4n8chsAEruzEztUEUaCXB_Q' && that.data.openid != 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s') {
+    if (that.data.openid != '《这里换成你自己的openid》') {
       Dialog.confirm({
           context: this,
           title: '??????',
@@ -89,7 +89,7 @@ Page({
   //添加新纪念日
   addMarkDay(e) {
     that = this
-    if (app.globalData.openid != 'oZLHV4n8chsAEruzEztUEUaCXB_Q' && app.globalData.openid != 'oZLHV4lqw6nzzt_1Z7I1A8PgR8-s') {
+    if (app.globalData.openid != '《这里换成你自己的openid》') {
       wx.showToast({
         title: '自己用脑袋记！',
         icon: 'error'

@@ -18,7 +18,6 @@ exports.main = async (event, context) => {
       portrait: event.portrait,
       submitTime: event.submitTime,
       updateTime: event.updateTime,
-      times: event.times,
     }
   })
 

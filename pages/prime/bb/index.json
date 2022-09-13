@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "都坐好，我讲两句！",
-  "navigationBarBackgroundColor": "#FF749B",
-  "usingComponents": {
-    "cloud-tip-modal": "/components/cloudTipModal/index"
-  }
-}

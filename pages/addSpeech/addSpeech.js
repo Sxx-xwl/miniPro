@@ -100,8 +100,6 @@ Page({
   //获取记录内容
   getText(event) {
     that = this
-    // event.detail 为当前输入的值
-    // console.log(event.detail);
     that.setData({
       text: event.detail
     })
@@ -137,7 +135,6 @@ Page({
     that = this
 
     let text = that.data.text
-    let mark = that.data.mark
 
     console.log(filePath)
     wx.cloud.uploadFile({
@@ -242,8 +239,7 @@ Page({
         _id: current,
       })
       .get()
-      .then(res => {
-        // console.log('找到了', res.data[0].openid )  
+      .then(res => { 
         currentID = res.data[0].openid
         if (currentID == app.globalData.myOpenid && app.globalData.openid == app.globalData.sheOpenid) {
           wx.showToast({
@@ -257,13 +253,10 @@ Page({
           message: '真的要修改这里的内容么？',
         })
         .then(() => {
-          // console.log(1)
           that.update(current)
         })
         .catch(() => {
-          // console.log(2)
         });
-        // console.log("current:",currentID)
       })
   },
   //修改

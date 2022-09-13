@@ -60,12 +60,6 @@ page {
   padding-right: 2%;
 }
 
-.commentPart3 {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
 .comment {
   word-break: break-all;
   word-wrap: break-word;
@@ -108,34 +102,5 @@ page {
   right: 0;
   left: 0;
   bottom: 0;
-}
 
-.wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  flex-direction: column;
-}
-
-.block {
-  display: flex;
-  width: 80vw;
-  height: 50vh;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-  background-color: #fff;
-}
-
-.text .van-cell{
-  width: 70vw;
-  padding: 0%;
-}
-
-.but{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
 }

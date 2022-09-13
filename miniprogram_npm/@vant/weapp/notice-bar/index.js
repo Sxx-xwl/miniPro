@@ -82,19 +82,18 @@ var utils_1 = require("../common/utils");
                             timingFunction: 'linear',
                             delay: delay,
                         });
-                        _this.scroll(true);
+                        _this.scroll();
                     }
                 });
             });
         },
-        scroll: function (isInit) {
+        scroll: function () {
             var _this = this;
-            if (isInit === void 0) { isInit = false; }
             this.timer && clearTimeout(this.timer);
             this.timer = null;
             this.setData({
                 animationData: this.resetAnimation
-                    .translateX(isInit ? 0 : this.wrapWidth)
+                    .translateX(this.wrapWidth)
                     .step()
                     .export(),
             });

@@ -62,23 +62,6 @@ page{
   position: relative;
 }
 
-.myself{
-  height: 55vh;
-  padding-right: 5%;
-  padding-left: 5%;
-  position: relative;
-}
-
-.shetime .van-cell__value{
-  display: flex;
-  justify-content: flex-end;
-}
-
-.shetime .van-cell__title{
-  width: 50%;
-  flex: 0.8;
-}
-
 .bottom {
   display: flex;
   justify-content: center;

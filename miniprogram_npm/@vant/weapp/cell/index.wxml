@@ -13,6 +13,7 @@
     name="{{ icon }}"
     class="van-cell__left-icon-wrap"
     custom-class="van-cell__left-icon"
+    bindtap="onClickicon"
   />
   <slot wx:else name="icon" />
 

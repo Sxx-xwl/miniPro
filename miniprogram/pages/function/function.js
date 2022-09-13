@@ -9,7 +9,6 @@ Page({
   data: {
     wishImg:app.getImgSrc('许愿.png'),
     dayImg:app.getImgSrc('纪念日.png'),
-    primeImg:app.getImgSrc('最初版.png'),
     userListImg:app.getImgSrc('用户列表.png'),
     feedbackImg:app.getImgSrc('反馈留言.png'),
     endImg:app.getImgSrc('敬请期待.png'),
@@ -18,11 +17,9 @@ Page({
   //生命周期函数--监听页面加载
   onLoad(options) {
     that = this
-    // console.log('用户权限',app.globalData.openid)
     that.setData({
       openid: app.globalData.openid
     })
-    // console.log('openid---',that.data.openid)
   },
   //页面相关事件处理函数--监听用户下拉动作
   onPullDownRefresh() {
@@ -42,14 +39,6 @@ Page({
     console.log('To wishingTree success:', e)
     wx.navigateTo({
       url: '/pages/wishingTreePage/wishingTreePage',
-    })
-  },
-  //最初版跳转
-  prime(){
-    that = this
-    console.log(1)
-    wx.navigateTo({
-      url: '/pages/prime/prime',
     })
   },
   //用户列表跳转

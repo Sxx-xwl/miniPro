@@ -28,7 +28,7 @@
 
 .myMarkDay .van-cell{
   border-radius: 5rpx;
-  border: 5rpx solid #5294f7;
+  border: 5rpx solid #669ff5;
   box-shadow: 5rpx 5rpx 5rpx 5rpx #E0E3DA;
   width: 100%;
   margin: 5rpx;
@@ -44,11 +44,6 @@
   width: 99%;
 }
 
-.van-cell-text{
-  word-break: break-all;
-  word-wrap: break-word;
-}
-
 .wrapper {
   display: flex;
   align-items: center;
@@ -56,24 +51,14 @@
   height: 100%;
 }
 
-.block1 {
+.block {
   display: flex;
   width: 80vw;
   height: 50vh;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  background: -webkit-linear-gradient(top,#e9defa,#fbfcdb);
-}
-
-.block2 {
-  display: flex;
-  width: 80vw;
-  height: 50vh;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-  background: -webkit-linear-gradient(top,#ffdee9,#b5fffc);
+  background: -webkit-linear-gradient(top,rgb(91, 233, 86),#ffffff,rgb(91, 233, 86));
 }
 
 .title{
@@ -82,17 +67,11 @@
 
 .time{
   font-size: large;
-  justify-content: center;
-  align-items: center;
-  word-break: break-all;
-  word-wrap: break-word;
-  padding-left: 3vw;
-  padding-right: 3vw;
 }
 
 .sheMarkDay .van-cell{
   border-radius: 5rpx;
-  border: 5rpx solid #ff0000;
+  border: 5rpx solid #f35fe7;
   box-shadow: 5rpx 5rpx 5rpx 5rpx #E0E3DA;
   width: 100%;
   margin: 5rpx;

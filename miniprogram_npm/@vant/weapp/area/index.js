@@ -17,10 +17,7 @@ var utils_1 = require("../common/utils");
 var EMPTY_CODE = '000000';
 (0, component_1.VantComponent)({
     classes: ['active-class', 'toolbar-class', 'column-class'],
-    props: __assign(__assign({}, shared_1.pickerProps), { showToolbar: {
-            type: Boolean,
-            value: true,
-        }, value: {
+    props: __assign(__assign({}, shared_1.pickerProps), { value: {
             type: String,
             observer: function (value) {
                 this.code = value;
